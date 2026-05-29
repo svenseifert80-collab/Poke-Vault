@@ -887,7 +887,13 @@ const sourcePill = s => SOURCE_LABELS[s]?`<span class="langpill">${SOURCE_LABELS
 
 function portHist(items){
   const dates=[...new Set(items.flatMap(i=>i.priceHistory.map(p=>p.date)))].sort();
-  return dates.map(date=>({date,value:items.reduce((s,it)=>{const h=it.priceHistory.filter(p=>p.date<=date);return s+(h.length?h[h.length-1].price:it.purchasePrice)*it.quantity;},0)}));
+  return dates.map(date=>({
+    date,
+    // Nur Items einrechnen die zu diesem Datum bereits gekauft waren
+    value:   items.reduce((s,it)=>{ if(it.purchaseDate>date) return s; const h=it.priceHistory.filter(p=>p.date<=date); return s+(h.length?h[h.length-1].price:it.purchasePrice)*it.quantity; },0),
+    // Investiert = nur tatsächlich bereits getätigte Käufe
+    invested:items.reduce((s,it)=>{ if(it.purchaseDate>date) return s; return s+inv(it); },0),
+  }));
 }
 
 // ── CHART ──
@@ -1024,7 +1030,7 @@ function renderDash(){
   document.getElementById('dash-hint').textContent=hist.length?`${hist.length} Datenpunkt${hist.length!==1?'e':''}`:' ';
   if(chartPort){chartPort.destroy();chartPort=null;}
   const ctx=document.getElementById('portfolio-chart').getContext('2d');
-  if(hist.length>=1){chartPort=new Chart(ctx,{type:'line',data:{labels:hist.map(h=>fdate(h.date)),datasets:[lineDS('Portfolio-Wert',hist.map(h=>h.value),'rgb(240,180,41)',false,true),lineDS('Investiert',hist.map(()=>tI),'rgb(115,115,138)',true,false)]},options:COPTS(eur)});}
+  if(hist.length>=1){chartPort=new Chart(ctx,{type:'line',data:{labels:hist.map(h=>fdate(h.date)),datasets:[lineDS('Portfolio-Wert',hist.map(h=>h.value),'rgb(240,180,41)',false,true),lineDS('Investiert',hist.map(h=>h.invested),'rgb(115,115,138)',true,false)]},options:COPTS(eur)});}
   else{ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);ctx.fillStyle='#73738a';ctx.font='14px Inter';ctx.textAlign='center';ctx.fillText('Trage CardMarket-Preise ein, um den Verlauf zu sehen',ctx.canvas.width/2,120);}
   renderMonthlyChart(items);
   renderDistChart(items);
