@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokéVault · Sealed Collection Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="chart.min.js"></script>
+  <script src="cards_en.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #09090f; --bg-card: #111119; --bg-input: #1a1a28; --bg-hover: #16162a;
+      --border:   #1e1e35; --border-b: #2e2e50; --gold: #f0b429;
+      --text:     #e0e0f0; --text-m: #73738a;  --text-d: #9090b0;
+      --green:    #34d399; --red: #f87171;
+      --radius:   12px; --radius-sm: 8px; --radius-lg: 16px;
+    }
+    html,body { min-height:100vh; background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; line-height:1.5; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(9,9,15,.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 24px; display:flex; align-items:center; gap:24px; height:60px; }
+    .nav-logo { font-family:'Cinzel',serif; font-size:18px; font-weight:600; color:var(--gold); letter-spacing:.05em; white-space:nowrap; }
+    .nav-logo span { color:var(--text-m); font-weight:400; font-size:13px; font-family:'Inter',sans-serif; letter-spacing:0; margin-left:10px; }
+    .nav-links { display:flex; gap:4px; }
+    .nav-btn { background:none; border:none; color:var(--text-m); font-family:'Inter',sans-serif; font-size:14px; cursor:pointer; padding:6px 14px; border-radius:var(--radius-sm); transition:all .15s; }
+    .nav-btn:hover { background:var(--bg-hover); color:var(--text); }
+    .nav-btn.active { background:var(--bg-hover); color:var(--gold); }
+    .nav-actions { display:flex; gap:8px; margin-left:auto; }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:var(--radius-sm); font-family:'Inter',sans-serif; font-size:14px; font-weight:500; cursor:pointer; border:1px solid transparent; transition:all .15s; }
+    .btn-primary   { background:var(--gold); color:#09080a; border-color:var(--gold); }
+    .btn-primary:hover { background:#daa320; }
+    .btn-secondary { background:transparent; color:var(--text); border-color:var(--border-b); }
+    .btn-secondary:hover { background:var(--bg-hover); }
+    .btn-danger    { background:transparent; color:var(--red); border-color:#4a1515; }
+    .btn-danger:hover { background:#4a1515; }
+    .btn-sm  { padding:5px 10px; font-size:13px; }
+    .btn-xs  { padding:3px 8px; font-size:12px; }
+    .btn-tog { background:var(--bg-input); color:var(--text-m); border-color:var(--border); }
+    .btn-tog.active { background:var(--bg-hover); color:var(--gold); border-color:var(--border-b); }
+    main { max-width:1240px; margin:0 auto; padding:32px 24px; }
+    .view { display:none; } .view.active { display:block; }
+    .mb-16 { margin-bottom:16px; } .mb-24 { margin-bottom:24px; }
+    .hidden { display:none !important; }
+    .card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
+    .stat-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; }
+    .stat-label { font-size:11px; color:var(--text-m); text-transform:uppercase; letter-spacing:.09em; margin-bottom:8px; }
+    .stat-value { font-family:'IBM Plex Mono',monospace; font-size:26px; font-weight:500; color:var(--text); }
+    .stat-value.positive { color:var(--green); } .stat-value.negative { color:var(--red); } .stat-value.gold { color:var(--gold); }
+    .stat-sub { font-size:13px; color:var(--text-m); margin-top:4px; }
+    .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+    .section-title { font-family:'Cinzel',serif; font-size:12px; font-weight:500; color:var(--text-m); text-transform:uppercase; letter-spacing:.1em; }
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    th { text-align:left; padding:10px 12px; font-size:11px; font-weight:500; color:var(--text-m); text-transform:uppercase; letter-spacing:.06em; border-bottom:1px solid var(--border); white-space:nowrap; }
+    td { padding:12px; border-bottom:1px solid var(--border); font-size:14px; color:var(--text); vertical-align:middle; }
+    tr:last-child td { border-bottom:none; }
+    tbody tr:hover td { background:var(--bg-hover); }
+    .td-mono { font-family:'IBM Plex Mono',monospace; font-size:14px; }
+    .thumb { width:36px; height:48px; object-fit:cover; border-radius:4px; background:var(--bg-input); display:block; }
+    .thumb-ph { width:36px; height:48px; border-radius:4px; background:var(--bg-input); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
+    .badge-box     { background:#111a3a; color:#6080e8; }
+    .badge-etb     { background:#1a1035; color:#9070e0; }
+    .badge-display { background:#1e1800; color:#d8a020; }
+    .badge-card    { background:#001a18; color:#30c0a8; }
+    .badge-pack    { background:#0d1a00; color:#70c030; }
+    .badge-tin     { background:#1a1010; color:#c08060; }
+    .badge-special { background:#1a001a; color:#d060d0; }
+    .badge-build   { background:#1a0a00; color:#e07030; }
+    .badge-serie   { background:var(--bg-input); color:var(--text-d); font-size:10px; }
+    .pl { font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:500; }
+    .pl.positive { color:var(--green); } .pl.negative { color:var(--red); }
+    .filter-bar { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
+    select.fsel { background:var(--bg-input); border:1px solid var(--border); color:var(--text); font-family:'Inter',sans-serif; font-size:13px; padding:6px 10px; border-radius:var(--radius-sm); cursor:pointer; }
+    select.fsel:focus { outline:none; border-color:var(--gold); }
+    .view-toggle { display:flex; gap:4px; margin-left:auto; }
+    /* GALLERY */
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; }
+    .gcard { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; cursor:pointer; transition:border-color .2s,transform .15s; }
+    .gcard:hover { border-color:var(--border-b); transform:translateY(-2px); }
+    .gcard-img { width:100%; aspect-ratio:3/4; object-fit:cover; display:block; background:var(--bg-input); }
+    .gcard-img-ph { width:100%; aspect-ratio:3/4; background:var(--bg-input); display:flex; align-items:center; justify-content:center; font-size:48px; }
+    .gcard-body { padding:12px 14px; }
+    .gcard-name { font-size:13px; font-weight:500; color:var(--text); margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .gcard-set  { font-size:11px; color:var(--text-m); margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .gcard-val  { font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:500; color:var(--text); }
+    .gcard-pl   { font-family:'IBM Plex Mono',monospace; font-size:12px; margin-top:2px; }
+    /* MODAL */
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.82); z-index:1000; display:flex; align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto; }
+    .modal { background:var(--bg-card); border:1px solid var(--border-b); border-radius:var(--radius-lg); padding:28px; width:100%; max-width:620px; margin:auto; }
+    .modal-title { font-family:'Cinzel',serif; font-size:16px; font-weight:600; color:var(--gold); margin-bottom:20px; }
+    /* FORM */
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-group { display:flex; flex-direction:column; gap:6px; }
+    .form-group.full { grid-column:1/-1; }
+    label { font-size:11px; color:var(--text-m); text-transform:uppercase; letter-spacing:.07em; font-weight:500; }
+    input,select,textarea { background:var(--bg-input); border:1px solid var(--border); color:var(--text); font-family:'Inter',sans-serif; font-size:14px; padding:9px 12px; border-radius:var(--radius-sm); width:100%; transition:border-color .15s; }
+    input:focus,select:focus,textarea:focus { outline:none; border-color:var(--gold); }
+    textarea { resize:vertical; min-height:60px; }
+    .form-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:20px; }
+    /* IMAGE UPLOAD */
+    .img-zone { border:2px dashed var(--border-b); border-radius:var(--radius-sm); padding:20px; text-align:center; cursor:pointer; transition:border-color .2s; position:relative; min-height:120px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; }
+    .img-zone:hover { border-color:var(--gold); }
+    .img-zone.has-img { padding:0; border-style:solid; }
+    .img-zone img { width:100%; max-height:220px; object-fit:contain; display:block; border-radius:var(--radius-sm); }
+    .img-hint { font-size:13px; color:var(--text-m); }
+    .img-sub  { font-size:11px; color:var(--text-m); }
+    .img-clear { position:absolute; top:8px; right:8px; background:rgba(0,0,0,.75); border:none; color:var(--text); cursor:pointer; border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:2; }
+    /* DETAIL */
+    .back-btn { display:inline-flex; align-items:center; gap:6px; color:var(--text-m); font-size:14px; cursor:pointer; background:none; border:none; padding:4px 0; margin-bottom:20px; transition:color .15s; }
+    .back-btn:hover { color:var(--gold); }
+    .detail-layout { display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start; margin-bottom:24px; }
+    .detail-img { border-radius:var(--radius); overflow:hidden; background:var(--bg-card); border:1px solid var(--border); aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; }
+    .detail-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .detail-img-ph { font-size:64px; color:var(--text-m); }
+    .detail-name { font-family:'Cinzel',serif; font-size:22px; font-weight:600; color:var(--text); margin-bottom:8px; }
+    .detail-meta { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:20px; }
+    .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .ph-item { display:flex; align-items:center; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--border); }
+    .ph-item:last-child { border-bottom:none; }
+    .chart-container { position:relative; height:220px; }
+    .empty-state { text-align:center; padding:60px 20px; color:var(--text-m); }
+    .empty-state h3 { font-family:'Cinzel',serif; font-size:18px; color:var(--text-d); margin-bottom:8px; }
+    .empty-state p { font-size:14px; margin-bottom:20px; }
+    .langpill { font-size:11px; color:var(--text-m); background:var(--bg-input); padding:2px 7px; border-radius:4px; font-weight:500; }
+    /* Dashboard grids */
+    .dash-2col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+    .chart-container-sm { position:relative; height:180px; }
+    /* Performer list */
+    .perf-list { list-style:none; }
+    .perf-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
+    .perf-item:last-child { border-bottom:none; }
+    .perf-rank { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-m); width:18px; flex-shrink:0; }
+    .perf-name { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .perf-val  { font-family:'IBM Plex Mono',monospace; font-size:13px; flex-shrink:0; }
+    /* Take-profit alerts */
+    .tp-alert { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:rgba(52,211,153,.07); border:1px solid rgba(52,211,153,.25); border-radius:var(--radius-sm); margin-bottom:8px; gap:12px; flex-wrap:wrap; }
+    .tp-alert-name { font-size:14px; font-weight:500; }
+    .tp-alert-meta { font-size:12px; color:var(--text-m); margin-top:2px; }
+    .tp-progress { height:4px; background:var(--bg-input); border-radius:2px; margin-top:6px; }
+    .tp-progress-bar { height:100%; background:var(--green); border-radius:2px; transition:width .4s; }
+    /* Condition badge */
+    .cond-mint   { background:#00200f; color:#34d399; }
+    .cond-shelf1 { background:#201800; color:#f0b429; }
+    .cond-shelf2 { background:#201200; color:#f97316; }
+    .cond-dmg    { background:#200000; color:#f87171; }
+    /* Card lookup */
+    .lookup-row { display:flex; gap:6px; align-items:flex-end; }
+    .lookup-row input { flex:1; }
+    .lookup-status { font-size:12px; color:var(--text-m); margin-top:4px; min-height:16px; }
+    .lookup-status.ok  { color:var(--green); }
+    .lookup-status.err { color:var(--red); }
+    /* GitHub Status */
+    .gh-pill { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:500; cursor:pointer; border:1px solid transparent; transition:all .2s; white-space:nowrap; }
+    .gh-pill.gh-ok      { background:rgba(52,211,153,.1);  border-color:rgba(52,211,153,.3);  color:var(--green); }
+    .gh-pill.gh-loading { background:rgba(240,180,41,.1);  border-color:rgba(240,180,41,.3);  color:var(--gold);  }
+    .gh-pill.gh-saving  { background:rgba(240,180,41,.1);  border-color:rgba(240,180,41,.3);  color:var(--gold);  }
+    .gh-pill.gh-error   { background:rgba(248,113,113,.1); border-color:rgba(248,113,113,.3); color:var(--red);   }
+    .gh-pill.gh-off     { background:var(--bg-input); border-color:var(--border); color:var(--text-m); }
+    /* Settings modal */
+    .settings-info { background:var(--bg-input); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:16px; font-size:12px; color:var(--text-m); line-height:1.7; }
+    .settings-info a { color:var(--gold); }
+    .settings-info code { background:rgba(255,255,255,.06); padding:1px 5px; border-radius:3px; font-size:11px; }
+    ::-webkit-scrollbar { width:6px; height:6px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:var(--border-b); border-radius:3px; }
+    @media(max-width:720px){
+      .form-grid{grid-template-columns:1fr;} .form-group.full{grid-column:1;}
+      .stats-grid{grid-template-columns:1fr 1fr;}
+      .detail-layout{grid-template-columns:1fr;} .detail-grid{grid-template-columns:1fr;}
+      .nav-logo span{display:none;} main{padding:20px 14px;}
+      .hide-mob{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PokéVault <span>sealed tracker</span></div>
+  <div class="nav-links">
+    <button class="nav-btn active" id="nav-dashboard"  onclick="nav('dashboard')">Dashboard</button>
+    <button class="nav-btn"        id="nav-collection" onclick="nav('collection')">Kollektion</button>
+  </div>
+  <div class="nav-actions">
+    <span id="gh-status" class="gh-pill gh-off hide-mob" onclick="openSettings()" title="GitHub-Synchronisation">&#9729; Lokal</span>
+    <button class="btn btn-secondary btn-sm hide-mob" onclick="exportData()">&#8595; Export</button>
+    <button class="btn btn-secondary btn-sm hide-mob" onclick="document.getElementById('imp').click()">&#8593; Import</button>
+    <input type="file" id="imp" accept=".json" style="display:none" onchange="importData(this)">
+    <button class="btn btn-secondary btn-sm hide-mob" onclick="openSettings()" title="GitHub-Einstellungen">&#9881;</button>
+    <button class="btn btn-primary btn-sm" onclick="openAddItem()">+ Hinzuf&uuml;gen</button>
+  </div>
+</nav>
+
+<main>
+  <div id="view-dashboard" class="view active">
+    <div class="stats-grid" id="dash-stats"></div>
+    <div class="card mb-24">
+      <div class="section-header">
+        <span class="section-title">Portfolio-Wert</span>
+        <span style="font-size:13px;color:var(--text-m)" id="dash-hint"></span>
+      </div>
+      <div class="chart-container"><canvas id="portfolio-chart"></canvas></div>
+    </div>
+    <!-- Take-Profit Alerts -->
+    <div id="dash-takeprofit" class="mb-24"></div>
+
+    <!-- Monatliche Ausgaben + Portfolio-Verteilung -->
+    <div class="dash-2col">
+      <div class="card">
+        <div class="section-header"><span class="section-title">Monatliche Ausgaben</span></div>
+        <div class="chart-container-sm"><canvas id="monthly-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="section-header">
+          <span class="section-title">Portfolio-Verteilung</span>
+          <div style="display:flex;gap:4px">
+            <button class="btn btn-tog btn-xs active" id="dist-btn-serie" onclick="setDistMode('serie')">Serie</button>
+            <button class="btn btn-tog btn-xs"        id="dist-btn-type"  onclick="setDistMode('type')">Typ</button>
+          </div>
+        </div>
+        <div class="chart-container-sm"><canvas id="dist-chart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Top 5 / Flop 5 -->
+    <div class="dash-2col" id="dash-performers"></div>
+
+    <div class="card">
+      <div class="section-header">
+        <span class="section-title">Alle Items</span>
+        <button class="btn btn-primary btn-sm" onclick="openAddItem()">+ Hinzufügen</button>
+      </div>
+      <div class="table-wrap" id="dash-table"></div>
+    </div>
+  </div>
+
+  <div id="view-collection" class="view">
+    <div class="section-header mb-16">
+      <h2 style="font-family:'Cinzel',serif;font-size:20px;font-weight:600">Kollektion</h2>
+      <button class="btn btn-primary btn-sm" onclick="openAddItem()">+ Hinzufügen</button>
+    </div>
+    <div class="filter-bar">
+      <select class="fsel" id="f-serie-f" onchange="renderColl()">
+        <option value="all">Alle Serien</option>
+        <option>Karmesin &amp; Purpur</option>
+        <option>Schwert &amp; Schild</option>
+        <option>Sonne &amp; Mond</option>
+        <option>Sonderedition / Promo</option>
+        <option>Japanisch</option>
+        <option>Sonstiges</option>
+      </select>
+      <select class="fsel" id="f-type-f" onchange="renderColl()">
+        <option value="all">Alle Typen</option>
+        <optgroup label="── Karten ──">
+          <option value="card">Karte</option>
+          <option value="card_sealed">Sealed Card</option>
+        </optgroup>
+        <optgroup label="── Packs &amp; Blister ──">
+          <option value="booster">Booster</option>
+          <option value="booster_slv">Sleeved Booster</option>
+          <option value="blister_1">1-Pack-Blister</option>
+          <option value="blister_3">3-Pack-Blister</option>
+          <option value="tech_stkr">Tech-Sticker-Kollektion</option>
+        </optgroup>
+        <optgroup label="── Bundles &amp; Displays ──">
+          <option value="bb">Booster Bundle</option>
+          <option value="bb_display">Boosterbundle Display</option>
+          <option value="display_36">36er Display</option>
+          <option value="display_18">18er Display</option>
+        </optgroup>
+        <optgroup label="── ETB / TTB ──">
+          <option value="etb">ETB / TTB</option>
+          <option value="etb_pc">Pokémon Center ETB</option>
+        </optgroup>
+        <optgroup label="── Tins ──">
+          <option value="tin">Tin-Box</option>
+          <option value="mini_tin">Mini-Tin-Box</option>
+          <option value="mini_tin_d">Mini-Tin-Box-Display</option>
+        </optgroup>
+        <optgroup label="── Kollektionen ──">
+          <option value="col_ultra">Ultra-Premium Kollektion</option>
+          <option value="col_super">Super-Premium Kollektion</option>
+          <option value="col_prem">Premium Collection</option>
+          <option value="col_fig">Premium Figure Collection</option>
+          <option value="col_illus">Illustration Collection</option>
+          <option value="col_si">Special Ill. Collection</option>
+          <option value="col_poster">Poster Collection</option>
+          <option value="col_binder">Binder Collection</option>
+          <option value="col_cl">Prem. Checklane Blister</option>
+          <option value="col_acc">Accessory Pouch Spec. Col.</option>
+          <option value="surprise">Surprise Box</option>
+        </optgroup>
+        <optgroup label="── Build &amp; Battle ──">
+          <option value="bab">Build &amp; Battle Box</option>
+          <option value="bab_sta">Build &amp; Battle Stadium</option>
+        </optgroup>
+      </select>
+      <select class="fsel" id="f-lang-f" onchange="renderColl()">
+        <option value="all">Alle Sprachen</option>
+        <option value="DE">Deutsch</option>
+        <option value="EN">Englisch</option>
+        <option value="JP">Japanisch</option>
+        <option value="FR">Französisch</option>
+        <option value="KO">Koreanisch</option>
+      </select>
+      <select class="fsel" id="f-sort-f" onchange="renderColl()">
+        <option value="name">Name A-Z</option>
+        <option value="value-desc">Wert hoch-tief</option>
+        <option value="value-asc">Wert tief-hoch</option>
+        <option value="pl-desc">Gewinn hoch-tief</option>
+        <option value="date-desc">Kaufdatum neu</option>
+        <option value="date-asc">Kaufdatum alt</option>
+      </select>
+      <div class="view-toggle">
+        <button class="btn btn-tog btn-sm active" id="tog-table"   onclick="setView('table')"   title="Tabelle">&#9776;</button>
+        <button class="btn btn-tog btn-sm"        id="tog-gallery" onclick="setView('gallery')" title="Galerie">&#10697;</button>
+      </div>
+    </div>
+    <div id="coll-content"></div>
+  </div>
+
+  <div id="view-detail" class="view">
+    <button class="back-btn" onclick="nav('collection')">&#8592; Zur&uuml;ck</button>
+    <div id="detail-content"></div>
+  </div>
+</main>
+
+<!-- MODAL ITEM -->
+<div class="modal-overlay hidden" id="modal-item">
+  <div class="modal">
+    <div class="modal-title" id="modal-item-title">Item hinzuf&uuml;gen</div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Foto</label>
+        <div class="img-zone" id="img-zone" onclick="document.getElementById('img-file').click()">
+          <div id="img-ph" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+            <div style="font-size:32px">&#128247;</div>
+            <div class="img-hint">Foto hochladen oder hierher ziehen</div>
+            <div class="img-sub">JPG / PNG &middot; wird automatisch komprimiert</div>
+          </div>
+          <img id="img-prev" style="display:none" alt="Vorschau">
+          <button class="img-clear hidden" id="img-clear" onclick="clearImg(event)">&#10005;</button>
+        </div>
+        <input type="file" id="img-file" accept="image/*" style="display:none" onchange="onImgFile(this)">
+        <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+          <span style="font-size:12px;color:var(--text-m)">oder URL:</span>
+          <input type="text" id="f-img-url" placeholder="https://..." style="flex:1;font-size:13px;padding:6px 10px" oninput="onImgUrl(this.value)">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Typ</label>
+        <select id="f-type" onchange="onTypeChange(this.value)">
+          <optgroup label="── Karten ──">
+            <option value="card">Karte</option>
+            <option value="card_sealed">Sealed Card</option>
+          </optgroup>
+          <optgroup label="── Packs &amp; Blister ──">
+            <option value="booster">Booster</option>
+            <option value="booster_slv">Sleeved Booster</option>
+            <option value="blister_1">1-Pack-Blister</option>
+            <option value="blister_3">3-Pack-Blister</option>
+            <option value="tech_stkr">Tech-Sticker-Kollektion</option>
+          </optgroup>
+          <optgroup label="── Bundles &amp; Displays ──">
+            <option value="bb">Booster Bundle</option>
+            <option value="bb_display">Boosterbundle Display</option>
+            <option value="display_36">36er Display</option>
+            <option value="display_18">18er Display</option>
+          </optgroup>
+          <optgroup label="── ETB / TTB ──">
+            <option value="etb">ETB / TTB</option>
+            <option value="etb_pc">Pokémon Center ETB</option>
+          </optgroup>
+          <optgroup label="── Tins ──">
+            <option value="tin">Tin-Box</option>
+            <option value="mini_tin">Mini-Tin-Box</option>
+            <option value="mini_tin_d">Mini-Tin-Box-Display</option>
+          </optgroup>
+          <optgroup label="── Kollektionen ──">
+            <option value="col_ultra">Ultra-Premium Kollektion</option>
+            <option value="col_super">Super-Premium Kollektion</option>
+            <option value="col_prem">Premium Collection</option>
+            <option value="col_fig">Premium Figure Collection</option>
+            <option value="col_illus">Illustration Collection</option>
+            <option value="col_si">Special Ill. Collection</option>
+            <option value="col_poster">Poster Collection</option>
+            <option value="col_binder">Binder Collection</option>
+            <option value="col_cl">Prem. Checklane Blister</option>
+            <option value="col_acc">Accessory Pouch Spec. Col.</option>
+            <option value="surprise">Surprise Box</option>
+          </optgroup>
+          <optgroup label="── Build &amp; Battle ──">
+            <option value="bab">Build &amp; Battle Box</option>
+            <option value="bab_sta">Build &amp; Battle Stadium</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Sprache</label>
+        <select id="f-lang" onchange="onLangChange(this.value)">
+          <option value="DE">Deutsch</option>
+          <option value="EN">Englisch</option>
+          <option value="JP">Japanisch</option>
+          <option value="FR">Franz&ouml;sisch</option>
+          <option value="KO">Koreanisch</option>
+          <option value="Other">Andere</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Serie</label>
+        <select id="f-serie" onchange="updateSetOpts()">
+          <option value="">-- w&auml;hlen --</option>
+          <option>Karmesin &amp; Purpur</option>
+          <option>Schwert &amp; Schild</option>
+          <option>Sonne &amp; Mond</option>
+          <option>Sonderedition / Promo</option>
+          <option>Japanisch</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Set</label>
+        <select id="f-set-sel" onchange="checkCustomSet()">
+          <option value="">-- erst Serie w&auml;hlen --</option>
+        </select>
+        <input type="text" id="f-set-custom" placeholder="Set-Name ..." style="display:none;margin-top:8px">
+      </div>
+
+      <div class="form-group full" id="f-cardno-grp" style="display:none">
+        <label>Kartennummer</label>
+        <div class="lookup-row">
+          <input type="text" id="f-cardno" placeholder="z.B. 199 oder SAR 232" oninput="onCardNoInput()">
+          <button class="btn btn-secondary btn-sm" type="button" onclick="lookupCard()" id="btn-lookup" title="Karte auf pokemontcg.io suchen">&#128269; Suchen</button>
+        </div>
+        <div class="lookup-status" id="lookup-status"></div>
+      </div>
+
+      <div class="form-group full" id="f-source-grp" style="display:none">
+        <label>Herkunft</label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap" id="f-source-btns">
+          <button type="button" class="btn btn-tog btn-sm active" data-source="bought"  onclick="setSource('bought')" >&#128179; Gekauft</button>
+          <button type="button" class="btn btn-tog btn-sm"        data-source="pulled"  onclick="setSource('pulled')" >&#127381; Aus Booster gezogen</button>
+          <button type="button" class="btn btn-tog btn-sm"        data-source="gift"    onclick="setSource('gift')"   >&#127873; Geschenk</button>
+        </div>
+        <input type="hidden" id="f-source" value="bought">
+      </div>
+
+      <div class="form-group full">
+        <label>Name</label>
+        <input type="text" id="f-name" placeholder="z.B. Charizard ex SAR · Obsidian Flames">
+      </div>
+
+      <div class="form-group">
+        <label id="f-price-label">Kaufpreis (&#8364; pro St&uuml;ck)</label>
+        <input type="number" id="f-price" step="0.01" min="0" placeholder="0.00">
+      </div>
+      <div class="form-group">
+        <label>Anzahl</label>
+        <input type="number" id="f-qty" min="1" value="1">
+      </div>
+      <div class="form-group full">
+        <label>Kaufdatum</label>
+        <input type="date" id="f-date">
+      </div>
+      <div class="form-group">
+        <label>Zustand</label>
+        <select id="f-condition">
+          <option value="">— unbekannt —</option>
+          <option value="mint">Mint Sealed</option>
+          <option value="shelf_light">Shelf Wear (leicht)</option>
+          <option value="shelf_heavy">Shelf Wear (stark)</option>
+          <option value="damaged">Besch&auml;digt</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Kaufkanal / H&auml;ndler</label>
+        <input type="text" id="f-dealer" placeholder="z.B. Cardmarket, Amazon, Lokales Gesch&auml;ft">
+      </div>
+      <div class="form-group">
+        <label>Verkaufsziel (&#8364; pro St&uuml;ck, optional)</label>
+        <input type="number" id="f-target" step="0.01" min="0" placeholder="ab wann verkaufen?">
+      </div>
+      <div class="form-group">
+        <label>Lagerort (optional)</label>
+        <input type="text" id="f-storage" placeholder="z.B. Vitrine, Safe, Regal 3">
+      </div>
+      <div class="form-group full">
+        <label>Notizen (optional)</label>
+        <textarea id="f-notes" placeholder="H&auml;ndler, Folienzustand, Besonderheiten ..."></textarea>
+      </div>
+      <div class="form-group full">
+        <label>CardMarket-Link (optional)</label>
+        <div style="display:flex;gap:6px;align-items:center">
+          <input type="url" id="f-cardmarket" placeholder="https://www.cardmarket.com/de/Pokemon/..." oninput="updateCmPreview(this.value)">
+          <a id="f-cardmarket-preview" href="#" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="white-space:nowrap;display:none">&#8599; Öffnen</a>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modal-item')">Abbrechen</button>
+      <button class="btn btn-primary"   onclick="saveItem()">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PRICE -->
+<div class="modal-overlay hidden" id="modal-price">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-title">Preis eintragen</div>
+    <p style="font-size:13px;color:var(--text-m);margin-bottom:12px">
+      F&uuml;r <strong id="price-item-name" style="color:var(--text)"></strong>
+    </p>
+    <div style="background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--text-m);line-height:1.7">
+      <div>&#128197; <strong style="color:var(--text-d)">Vergangene Daten m&ouml;glich</strong> &mdash; einfach ein fr&uuml;heres Datum w&auml;hlen f&uuml;r Release-Preise oder historische Werte.</div>
+      <div style="margin-top:4px">&#128269; EN-Referenz: <a id="price-pc-link" href="https://www.pricecharting.com" target="_blank" rel="noopener" style="color:var(--gold)">pricecharting.com &#8599;</a> &nbsp;&middot;&nbsp; Umrechnung: <span style="color:var(--text-d);font-family:'IBM Plex Mono',monospace">$ &times; 0,85 &asymp; &euro;</span></div>
+    </div>
+    <div class="form-group" style="margin-bottom:14px">
+      <label>Datum</label>
+      <input type="date" id="fp-date">
+    </div>
+    <div class="form-group" style="margin-bottom:14px">
+      <label>Preis (&euro; pro St&uuml;ck)</label>
+      <input type="number" id="fp-price" step="0.01" min="0" placeholder="0.00">
+    </div>
+    <div class="form-group" style="margin-bottom:14px">
+      <label>Notiz (optional)</label>
+      <input type="text" id="fp-note" placeholder="z.B. Release-Preis, Trend, nach Reprint&nbsp;&hellip;">
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-secondary" onclick="closeModal('modal-price')">Abbrechen</button>
+      <button class="btn btn-primary"   onclick="savePriceEntry()">Eintragen</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SETTINGS -->
+<div class="modal-overlay hidden" id="modal-settings">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-title">&#9881; GitHub-Synchronisation</div>
+    <div class="settings-info">
+      Verbinde dein GitHub-Repository damit Sammlung und Bilder auf <strong style="color:var(--text-d)">jedem Ger&auml;t</strong> verf&uuml;gbar sind.<br><br>
+      &#128279; Token erstellen:
+      <a href="https://github.com/settings/tokens/new?scopes=public_repo&description=PokéVault" target="_blank" rel="noopener">
+        GitHub → Settings → Developer Settings → Personal Access Tokens &#8599;
+      </a><br>
+      Ben&ouml;tigte Berechtigung: <code>public_repo</code> (oder <code>repo</code> f&uuml;r private Repos)
+    </div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Repository (Format: <code style="font-size:10px">benutzername/repo-name</code>)</label>
+        <input type="text" id="gh-repo" placeholder="z.B. maxmuster/pokevault">
+      </div>
+      <div class="form-group full">
+        <label>Personal Access Token</label>
+        <input type="password" id="gh-token" placeholder="github_pat_... oder ghp_...">
+      </div>
+    </div>
+    <div id="gh-test-result" style="font-size:13px;margin-top:12px;min-height:20px"></div>
+    <div class="form-actions" style="margin-top:16px">
+      <button class="btn btn-danger btn-sm" onclick="clearGHConfig()">Verbindung trennen</button>
+      <button class="btn btn-secondary" onclick="closeModal('modal-settings')">Abbrechen</button>
+      <button class="btn btn-primary" onclick="saveGHConfig()">Verbinden &amp; Testen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── SERIES & SETS ──
+const SERIES_DATA = {
+  'Karmesin & Purpur': {
+    labelEN: 'Scarlet & Violet',
+    sets: [
+      { code:'SVI',  de:'Karmesin & Purpur',          en:'Scarlet & Violet',     apiId:'sv1'     },
+      { code:'PAL',  de:'Entwicklungen in Paldea',    en:'Paldea Evolved',       apiId:'sv2'     },
+      { code:'OBF',  de:'Obsidianflammen',             en:'Obsidian Flames',      apiId:'sv3'     },
+      { code:'MEW',  de:'151',                         en:'151',                  apiId:'sv3pt5'  },
+      { code:'PAR',  de:'Paradoxrift',                 en:'Paradox Rift',         apiId:'sv4'     },
+      { code:'PAF',  de:'Paldeas Schicksale',          en:'Paldean Fates',        apiId:'sv4pt5'  },
+      { code:'TEF',  de:'Gewalten der Zeit',           en:'Temporal Forces',      apiId:'sv5'     },
+      { code:'TWM',  de:'Maskerade im Zwielicht',      en:'Twilight Masquerade',  apiId:'sv6'     },
+      { code:'SFA',  de:'Nebel der Sagen',             en:'Shrouded Fable',       apiId:'sv6pt5'  },
+      { code:'SCR',  de:'Stellar Miracle',             en:'Stellar Crown',        apiId:'sv7'     },
+      { code:'SSP',  de:'Stürmische Funken',           en:'Surging Sparks',       apiId:'sv8'     },
+      { code:'PRE',  de:'Prismatische Entwicklungen',  en:'Prismatic Evolutions', apiId:'sv8pt5'  },
+      { code:'DRI',  de:'Ewige Rivalen',               en:'Destined Rivals',      apiId:'sv9'     },
+      { code:'JTG',  de:'Reisegefährten',              en:'Journey Together',     apiId:'sv10'    },
+      { code:'BLK',  de:'Schwarze Blitze',             en:'Black Bolt',           apiId:'sv10pt5' },
+      { code:'WHT',  de:'White Flare',                 en:'White Flare',          apiId:'sv10pt5' },
+    ]
+  },
+  'Schwert & Schild': {
+    labelEN: 'Sword & Shield',
+    sets: [
+      { code:'SSH',  de:'Schwert & Schild',            en:'Sword & Shield',       apiId:'swsh1'   },
+      { code:'RCL',  de:'Rebellenclash',               en:'Rebel Clash',          apiId:'swsh2'   },
+      { code:'DAA',  de:'Flammende Finsternis',        en:'Darkness Ablaze',      apiId:'swsh3'   },
+      { code:'VIV',  de:'Farbenschock',                en:'Vivid Voltage',        apiId:'swsh4'   },
+      { code:'SHF',  de:'Strahlende Schicksale',       en:'Shining Fates',        apiId:'swsh45'  },
+      { code:'BST',  de:'Kampfstile',                  en:'Battle Styles',        apiId:'swsh5'   },
+      { code:'CRE',  de:'Eisige Herrschaft',           en:'Chilling Reign',       apiId:'swsh6'   },
+      { code:'EVS',  de:'Entwickelnde Horizonte',      en:'Evolving Skies',       apiId:'swsh7'   },
+      { code:'CEL',  de:'Celebrations',                en:'Celebrations',         apiId:'cel25'   },
+      { code:'FST',  de:'Fusionsangriff',              en:'Fusion Strike',        apiId:'swsh8'   },
+      { code:'BRS',  de:'Brillante Sterne',            en:'Brilliant Stars',      apiId:'swsh9'   },
+      { code:'ASR',  de:'Astraler Glanz',              en:'Astral Radiance',      apiId:'swsh10'  },
+      { code:'PGO',  de:'Pokémon GO',                  en:'Pokémon GO',           apiId:'pgo'     },
+      { code:'LOR',  de:'Verlorener Ursprung',         en:'Lost Origin',          apiId:'swsh11'  },
+      { code:'SIT',  de:'Silberne Sturmwinde',         en:'Silver Tempest',       apiId:'swsh12'  },
+      { code:'CRZ',  de:'Gipfel der Krone',            en:'Crown Zenith',         apiId:'swsh12pt5'},
+    ]
+  },
+  'Sonne & Mond': {
+    labelEN: 'Sun & Moon',
+    sets: [
+      { code:'SUM',  de:'Sonne & Mond',                en:'Sun & Moon',           apiId:'sm1'     },
+      { code:'GRI',  de:'Wächter des Aufstiegs',       en:'Guardians Rising',     apiId:'sm2'     },
+      { code:'BUS',  de:'Schattenwächter',             en:'Burning Shadows',      apiId:'sm3'     },
+      { code:'CIN',  de:'Verwüstung der Nacht',        en:'Crimson Invasion',     apiId:'sm4'     },
+      { code:'UPR',  de:'Ultraprismen',                en:'Ultra Prism',          apiId:'sm5'     },
+      { code:'FLI',  de:'Verbotenes Licht',            en:'Forbidden Light',      apiId:'sm6'     },
+      { code:'CES',  de:'Magie der Meere',             en:'Celestial Storm',      apiId:'sm7'     },
+      { code:'DRM',  de:'Sturm der Drachen',           en:'Dragon Majesty',       apiId:'sm75'    },
+      { code:'LOT',  de:'Legendäre Schätze',           en:'Lost Thunder',         apiId:'sm8'     },
+      { code:'TEU',  de:'Teamrivalität',               en:'Team Up',              apiId:'sm9'     },
+      { code:'UNB',  de:'Duell der Schicksale',        en:'Unbroken Bonds',       apiId:'sm10'    },
+      { code:'UNM',  de:'Kosmik',                      en:'Unified Minds',        apiId:'sm11'    },
+      { code:'CEC',  de:'Traumwesen',                  en:'Cosmic Eclipse',       apiId:'sm12'    },
+    ]
+  },
+  'Sonderedition / Promo': {
+    labelEN: 'Special Edition / Promo',
+    sets: [
+      { code:'SC01', de:'Special Collection',          en:'Special Collection'   },
+      { code:'GS01', de:'Gift Set / Box Set',          en:'Gift Set / Box Set'   },
+      { code:'VB01', de:'V-Box',                       en:'V-Box'                },
+      { code:'SD01', de:'Starter-Deck',                en:'Starter Deck'         },
+      { code:'TK01', de:'Trainer Kit',                 en:'Trainer Kit'          },
+      { code:'PR01', de:'Promo-Set',                   en:'Promo Set'            },
+      { code:'SON1', de:'Sonstiges',                   en:'Other'                },
+    ]
+  },
+  'Japanisch': {
+    labelEN: 'Japanese',
+    sets: [
+      { code:'JAP-CB', de:'Clay Burst',                en:'Clay Burst'           },
+      { code:'JAP-SH', de:'Snow Hazard',               en:'Snow Hazard'          },
+      { code:'JAP-TB', de:'Triplet Beat',              en:'Triplet Beat'         },
+      { code:'JAP-151',de:'Pokémon Card 151',          en:'Pokémon Card 151'     },
+      { code:'JAP-RBF',de:'Ruler of the Black Flame',  en:'Ruler of the Black Flame' },
+      { code:'JAP-SON',de:'Sonstiges',                 en:'Other'                },
+    ]
+  },
+  'Sonstiges': {
+    labelEN: 'Other',
+    sets: [
+      { code:'OTH1', de:'Sonstiges', en:'Other' },
+    ]
+  }
+};
+
+// ── TYPES ──
+const TYPES = [
+  { value:'card',        label:'Karte',                      badge:'badge-card',    icon:'🃏' },
+  { value:'card_sealed', label:'Sealed Card',                badge:'badge-card',    icon:'💎' },
+  { value:'booster',     label:'Booster',                    badge:'badge-pack',    icon:'📩' },
+  { value:'booster_slv', label:'Sleeved Booster',            badge:'badge-pack',    icon:'📩' },
+  { value:'blister_1',   label:'1-Pack-Blister',             badge:'badge-pack',    icon:'📩' },
+  { value:'blister_3',   label:'3-Pack-Blister',             badge:'badge-pack',    icon:'📩' },
+  { value:'tech_stkr',   label:'Tech-Sticker-Kollektion',    badge:'badge-pack',    icon:'🏷️' },
+  { value:'bb',          label:'Booster Bundle',             badge:'badge-box',     icon:'📦' },
+  { value:'bb_display',  label:'Boosterbundle Display',      badge:'badge-display', icon:'🗂️' },
+  { value:'display_36',  label:'36er Display',               badge:'badge-display', icon:'🗂️' },
+  { value:'display_18',  label:'18er Display',               badge:'badge-display', icon:'🗂️' },
+  { value:'etb',         label:'ETB / TTB',                  badge:'badge-etb',     icon:'🎁' },
+  { value:'etb_pc',      label:'Pokémon Center ETB',         badge:'badge-etb',     icon:'🎁' },
+  { value:'tin',         label:'Tin-Box',                    badge:'badge-tin',     icon:'🥫' },
+  { value:'mini_tin',    label:'Mini-Tin-Box',               badge:'badge-tin',     icon:'🥫' },
+  { value:'mini_tin_d',  label:'Mini-Tin-Box-Display',       badge:'badge-display', icon:'🗂️' },
+  { value:'col_ultra',   label:'Ultra-Premium Kollektion',   badge:'badge-special', icon:'👑' },
+  { value:'col_super',   label:'Super-Premium Kollektion',   badge:'badge-special', icon:'👑' },
+  { value:'col_prem',    label:'Premium Collection',         badge:'badge-special', icon:'⭐' },
+  { value:'col_fig',     label:'Premium Figure Collection',  badge:'badge-special', icon:'⭐' },
+  { value:'col_illus',   label:'Illustration Collection',    badge:'badge-special', icon:'🎨' },
+  { value:'col_si',      label:'Special Ill. Collection',    badge:'badge-special', icon:'✨' },
+  { value:'col_poster',  label:'Poster Collection',          badge:'badge-special', icon:'🖼️' },
+  { value:'col_binder',  label:'Binder Collection',          badge:'badge-special', icon:'📋' },
+  { value:'col_cl',      label:'Prem. Checklane Blister',    badge:'badge-special', icon:'📋' },
+  { value:'col_acc',     label:'Accessory Pouch Spec. Col.', badge:'badge-special', icon:'👜' },
+  { value:'surprise',    label:'Surprise Box',               badge:'badge-box',     icon:'🎲' },
+  { value:'bab',         label:'Build & Battle Box',         badge:'badge-build',   icon:'⚔️' },
+  { value:'bab_sta',     label:'Build & Battle Stadium',     badge:'badge-build',   icon:'🏟️' },
+  // Legacy aliases (for old stored data)
+  { value:'box',     label:'Booster Box',  badge:'badge-box',     icon:'📦' },
+  { value:'display', label:'Display',      badge:'badge-display', icon:'🗂️' },
+  { value:'case',    label:'Case',         badge:'badge-box',     icon:'📦' },
+  { value:'pack',    label:'Pack',         badge:'badge-pack',    icon:'📩' },
+];
+const TYPES_MAP = Object.fromEntries(TYPES.map(t=>[t.value,t]));
+
+// ── SET HELPERS ──
+function findSetByCode(code){
+  for(const series of Object.values(SERIES_DATA)){
+    const s=series.sets.find(x=>x.code===code);
+    if(s)return s;
+  }return null;
+}
+function setDisplayName(it){
+  if(it.setCode){
+    const s=findSetByCode(it.setCode);
+    if(s){
+      const lang=it.language==='EN'?'en':'de';
+      return s[lang]||s.de;
+    }
+  }
+  // backward compat: strip "Serie – " prefix
+  return it.set?it.set.replace(/^[^–]+–\s*/,''):(it.set||'');
+}
+
+// ── GITHUB SERVICE ──
+const GH = {
+  CFG_KEY:  'pokevault_gh_cfg',
+  SHA_KEY:  'pokevault_gh_sha',
+  SAVE_DELAY: 2500,   // ms debounce für collection.json
+  _saveTimer: null,
+  config: null,
+
+  loadConfig(){ try{ this.config=JSON.parse(localStorage.getItem(this.CFG_KEY)); }catch{ this.config=null; } return this.config; },
+  saveConfig(c){ this.config=c; localStorage.setItem(this.CFG_KEY,JSON.stringify(c)); },
+  clearConfig(){ this.config=null; localStorage.removeItem(this.CFG_KEY); localStorage.removeItem(this.SHA_KEY); },
+  isConfigured(){ return !!(this.config?.token && this.config?.repo && this.config?.repo.includes('/')); },
+
+  _owner(){ return this.config.repo.split('/')[0]; },
+  _repo() { return this.config.repo.split('/').slice(1).join('/'); },
+
+  _headers(){ return { 'Authorization':`Bearer ${this.config.token}`, 'Content-Type':'application/json', 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' }; },
+
+  async getFile(path){
+    const r=await fetch(`https://api.github.com/repos/${this._owner()}/${this._repo()}/contents/${path}`,{headers:this._headers()});
+    if(r.status===404) return null;
+    if(!r.ok) throw new Error(`GitHub ${r.status}: ${(await r.json().catch(()=>({}))).message||''}`);
+    return r.json();
+  },
+
+  async putFile(path, b64content, message){
+    const shas=JSON.parse(localStorage.getItem(this.SHA_KEY)||'{}');
+    const body={message,content:b64content};
+    if(shas[path]) body.sha=shas[path];
+    const url=`https://api.github.com/repos/${this._owner()}/${this._repo()}/contents/${path}`;
+    let r=await fetch(url,{method:'PUT',headers:this._headers(),body:JSON.stringify(body)});
+    // SHA-Konflikt → aktuelles SHA holen und nochmal versuchen
+    if(r.status===409||r.status===422){
+      const cur=await this.getFile(path);
+      if(cur){ body.sha=cur.sha; r=await fetch(url,{method:'PUT',headers:this._headers(),body:JSON.stringify(body)}); }
+    }
+    if(!r.ok) throw new Error(`GitHub ${r.status}: ${(await r.json().catch(()=>({}))).message||''}`);
+    const json=await r.json();
+    shas[path]=json.content.sha;
+    localStorage.setItem(this.SHA_KEY,JSON.stringify(shas));
+    return json;
+  },
+
+  // UTF-8 JSON → Base64 sicher
+  _toB64(str){ return btoa(unescape(encodeURIComponent(str))); },
+  _fromB64(b64){ return decodeURIComponent(escape(atob(b64.replace(/\n/g,'')))); },
+
+  async saveCollection(data){
+    ghStatus('saving');
+    await this.putFile('collection.json',this._toB64(JSON.stringify(data,null,2)),'PokéVault: Sammlung aktualisiert');
+    ghStatus('ok');
+  },
+
+  scheduleSave(data){
+    clearTimeout(this._saveTimer);
+    this._saveTimer=setTimeout(()=>{
+      this.saveCollection(data).catch(e=>{ console.warn('GH save:',e); ghStatus('error',e.message); });
+    },this.SAVE_DELAY);
+  },
+
+  async loadCollection(){
+    const file=await this.getFile('collection.json');
+    if(!file) return null;
+    const shas=JSON.parse(localStorage.getItem(this.SHA_KEY)||'{}');
+    shas['collection.json']=file.sha;
+    localStorage.setItem(this.SHA_KEY,JSON.stringify(shas));
+    return JSON.parse(this._fromB64(file.content));
+  },
+
+  async uploadImage(dataUrl){
+    const ext='jpg';
+    const fname=`images/${Date.now()}-${Math.random().toString(36).slice(2,6)}.${ext}`;
+    const b64=dataUrl.split(',')[1];
+    await this.putFile(fname,b64,`PokéVault: Bild hochgeladen`);
+    return fname;
+  },
+
+  imageUrl(path){
+    if(!path||path.startsWith('data:')||path.startsWith('http')) return path;
+    if(!this.config) return path;
+    return `https://${this._owner()}.github.io/${this._repo()}/${path}`;
+  },
+
+  async testConnection(){
+    const r=await fetch(`https://api.github.com/repos/${this._owner()}/${this._repo()}`,{headers:this._headers()});
+    if(!r.ok) throw new Error(`HTTP ${r.status}: ${(await r.json().catch(()=>({}))).message||'Unbekannter Fehler'}`);
+    return r.json();
+  }
+};
+
+function imgSrc(d){ if(!d) return ''; if(d.startsWith('data:')||d.startsWith('http')) return d; return GH.isConfigured()?GH.imageUrl(d):d; }
+
+function ghStatus(state,msg=''){
+  const el=document.getElementById('gh-status'); if(!el) return;
+  const S={ok:{cls:'gh-ok',txt:'✓ GitHub'},loading:{cls:'gh-loading',txt:'↻ Laden…'},saving:{cls:'gh-saving',txt:'↑ Speichern…'},error:{cls:'gh-error',txt:'✗ GitHub'},off:{cls:'gh-off',txt:'☁ Lokal'}};
+  const s=S[state]||S.ok; el.className=`gh-pill ${s.cls} hide-mob`; el.textContent=s.txt; if(msg) el.title=msg;
+}
+
+function openSettings(){
+  const c=GH.config||{};
+  document.getElementById('gh-repo').value=c.repo||'';
+  document.getElementById('gh-token').value=c.token||'';
+  document.getElementById('gh-test-result').textContent='';
+  document.getElementById('modal-settings').classList.remove('hidden');
+}
+async function saveGHConfig(){
+  const repo=document.getElementById('gh-repo').value.trim();
+  const token=document.getElementById('gh-token').value.trim();
+  const res=document.getElementById('gh-test-result');
+  if(!repo||!repo.includes('/')){res.innerHTML='<span style="color:var(--red)">Bitte Repository im Format benutzername/repo-name eingeben.</span>';return;}
+  if(!token){res.innerHTML='<span style="color:var(--red)">Bitte Token eingeben.</span>';return;}
+  GH.saveConfig({repo,token});
+  res.innerHTML='<span style="color:var(--gold)">↻ Verbindung wird getestet…</span>';
+  try{
+    const info=await GH.testConnection();
+    res.innerHTML=`<span style="color:var(--green)">✓ Verbunden mit <strong>${info.full_name}</strong> — Daten werden geladen…</span>`;
+    ghStatus('loading');
+    closeModal('modal-settings');
+    const data=await GH.loadCollection();
+    if(data?.items){ DB.saveLocal(data); renderDash(); }
+    ghStatus('ok');
+  }catch(e){
+    res.innerHTML=`<span style="color:var(--red)">✗ Fehler: ${e.message}</span>`;
+    GH.clearConfig(); ghStatus('off');
+  }
+}
+function clearGHConfig(){ if(!confirm('GitHub-Verbindung trennen? Lokale Daten bleiben erhalten.'))return; GH.clearConfig(); ghStatus('off'); closeModal('modal-settings'); }
+
+// ── DB ──
+const DB = {
+  K:'pokevault_v2',
+  get(){try{return JSON.parse(localStorage.getItem(this.K)||'{"items":[]}')}catch{return{items:[]}}},
+  saveLocal(d){localStorage.setItem(this.K,JSON.stringify(d))},
+  save(d){this.saveLocal(d); if(GH.isConfigured()) GH.scheduleSave(d);},
+  getItems(){return this.get().items},
+  getItem(id){return this.getItems().find(i=>i.id===id)},
+  addItem(it){const db=this.get();db.items.unshift(it);this.save(db)},
+  updateItem(id,u){const db=this.get();const i=db.items.findIndex(x=>x.id===id);if(i>=0){db.items[i]={...db.items[i],...u};this.save(db)}},
+  deleteItem(id){const db=this.get();db.items=db.items.filter(i=>i.id!==id);this.save(db)},
+  addPE(itemId,e){const db=this.get();const it=db.items.find(i=>i.id===itemId);if(it){it.priceHistory.push(e);it.priceHistory.sort((a,b)=>a.date.localeCompare(b.date));this.save(db)}},
+  delPE(itemId,idx){const db=this.get();const it=db.items.find(i=>i.id===itemId);if(it){it.priceHistory.splice(idx,1);this.save(db)}}
+};
+
+// ── COMPUTED ──
+const curP  = it => it.priceHistory.length ? it.priceHistory[it.priceHistory.length-1].price : it.purchasePrice;
+const curV  = it => curP(it)*it.quantity;
+const inv   = it => it.purchasePrice*it.quantity;
+const plv   = it => curV(it)-inv(it);
+const plp   = it => { const i=inv(it); return i>0?(plv(it)/i)*100:0; };
+const plcls = n  => n>=0?'positive':'negative';
+const sgn   = n  => n>=0?'+':'';
+const eur   = n  => new Intl.NumberFormat('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)+' €';
+const pct   = n  => sgn(n)+new Intl.NumberFormat('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1}).format(n)+'%';
+const fdate = s  => { if(!s) return '—'; const [y,m,d]=s.split('-'); return `${d}.${m}.${y}`; };
+const today = () => new Date().toISOString().split('T')[0];
+const uid   = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+
+function typeBadge(t){
+  const td=TYPES_MAP[t];
+  if(td)return `<span class="badge ${td.badge}">${td.label}</span>`;
+  return `<span class="badge badge-box">${t}</span>`;
+}
+function typeIcon(t){ return (TYPES_MAP[t]||{icon:'📦'}).icon; }
+const langPill   = l => `<span class="langpill">${l}</span>`;
+const SOURCE_LABELS = {pulled:'🎲 Aus Booster', gift:'🎁 Geschenk'};
+const sourcePill = s => SOURCE_LABELS[s]?`<span class="langpill">${SOURCE_LABELS[s]}</span>`:``;
+
+function portHist(items){
+  const dates=[...new Set(items.flatMap(i=>i.priceHistory.map(p=>p.date)))].sort();
+  return dates.map(date=>({date,value:items.reduce((s,it)=>{const h=it.priceHistory.filter(p=>p.date<=date);return s+(h.length?h[h.length-1].price:it.purchasePrice)*it.quantity;},0)}));
+}
+
+// ── CHART ──
+const COPTS = yf => ({responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#73738a',font:{family:'IBM Plex Mono',size:11},boxWidth:12}},tooltip:{backgroundColor:'#111119',borderColor:'#2e2e50',borderWidth:1,titleColor:'#e0e0f0',bodyColor:'#9090b0',callbacks:{label:c=>`${c.dataset.label}: ${yf(c.raw)}`}}},scales:{x:{grid:{color:'#1e1e35'},ticks:{color:'#73738a',font:{family:'IBM Plex Mono',size:10},maxRotation:40}},y:{grid:{color:'#1e1e35'},ticks:{color:'#73738a',font:{family:'IBM Plex Mono',size:10},callback:v=>yf(v)}}}});
+function lineDS(label,data,color,dashed=false,fill=false){return{label,data,borderColor:color,backgroundColor:fill?color.replace(')',',0.08)').replace('rgb','rgba'):'transparent',borderWidth:dashed?1:2,borderDash:dashed?[5,5]:[],pointBackgroundColor:color,pointRadius:dashed?0:4,pointHoverRadius:dashed?0:6,tension:0.3,fill};}
+
+// ── STATE ──
+let curView='dashboard',editId=null,priceItemId=null;
+let chartPort=null,chartPrice=null,chartMonthly=null,chartDist=null;
+let collMode='table',pendImg=null,distMode='serie';
+let cardsDB=null; // lazy-loaded from cards_en.js
+
+// Chart colour palette
+const PAL=['#f0b429','#6080e8','#9070e0','#30c0a8','#70c030','#e05090','#c08060','#d060d0','#73738a','#4090c0'];
+
+// Condition display
+const COND_LABEL={mint:'Mint Sealed',shelf_light:'Shelf Wear ·',shelf_heavy:'Shelf Wear ··',damaged:'Beschädigt'};
+const COND_CLS  ={mint:'cond-mint',shelf_light:'cond-shelf1',shelf_heavy:'cond-shelf2',damaged:'cond-dmg'};
+function condBadge(c){return c&&COND_LABEL[c]?`<span class="badge ${COND_CLS[c]}">${COND_LABEL[c]}</span>`:'';}
+
+function setDistMode(m){
+  distMode=m;
+  document.getElementById('dist-btn-serie').classList.toggle('active',m==='serie');
+  document.getElementById('dist-btn-type').classList.toggle('active',m==='type');
+  renderDash();
+}
+
+// ── NAV ──
+function nav(view,itemId){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  curView=view;
+  document.getElementById(`view-${view}`).classList.add('active');
+  const nb=document.getElementById(`nav-${view}`);if(nb)nb.classList.add('active');
+  if(view==='dashboard') renderDash();
+  if(view==='collection') renderColl();
+  if(view==='detail'&&itemId) renderDetail(itemId);
+}
+
+// ── DASHBOARD HELPERS ──
+
+// Monatliche Ausgaben
+function renderMonthlyChart(items){
+  const months={};
+  items.forEach(it=>{
+    if(!it.purchaseDate)return;
+    const k=it.purchaseDate.slice(0,7);
+    months[k]=(months[k]||0)+inv(it);
+  });
+  const keys=Object.keys(months).sort().slice(-12); // max. 12 Monate
+  const labels=keys.map(k=>{const[y,m]=k.split('-');return`${m}/${y.slice(2)}`;});
+  const vals=keys.map(k=>months[k]);
+  if(chartMonthly){chartMonthly.destroy();chartMonthly=null;}
+  const ctx=document.getElementById('monthly-chart')?.getContext('2d');
+  if(!ctx)return;
+  if(!keys.length){ctx.fillStyle='#73738a';ctx.font='13px Inter';ctx.textAlign='center';ctx.fillText('Noch keine Kaufdaten',ctx.canvas.width/2,90);return;}
+  chartMonthly=new Chart(ctx,{type:'bar',data:{labels,datasets:[{label:'Ausgaben',data:vals,backgroundColor:'rgba(240,180,41,.5)',borderColor:'#f0b429',borderWidth:1,borderRadius:4}]},options:{...COPTS(eur),plugins:{...COPTS(eur).plugins,legend:{display:false}}}});
+}
+
+// Portfolio-Verteilung (Donut)
+function renderDistChart(items){
+  const key=distMode==='serie'?'serie':'type';
+  const groups={};
+  items.forEach(it=>{
+    const k=(distMode==='type'?(TYPES_MAP[it[key]]?.label||it[key]):(it[key]||'Sonstiges'));
+    groups[k]=(groups[k]||0)+curV(it);
+  });
+  let entries=Object.entries(groups).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  if(entries.length>8){const rest=entries.slice(7).reduce((s,[,v])=>s+v,0);entries=[...entries.slice(0,7),['Sonstiges',rest]];}
+  if(chartDist){chartDist.destroy();chartDist=null;}
+  const ctx=document.getElementById('dist-chart')?.getContext('2d');
+  if(!ctx)return;
+  if(!entries.length){ctx.fillStyle='#73738a';ctx.font='13px Inter';ctx.textAlign='center';ctx.fillText('Keine Daten',ctx.canvas.width/2,90);return;}
+  chartDist=new Chart(ctx,{type:'doughnut',data:{labels:entries.map(([k])=>k),datasets:[{data:entries.map(([,v])=>v),backgroundColor:PAL.slice(0,entries.length),borderColor:'#111119',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'right',labels:{color:'#73738a',font:{family:'IBM Plex Mono',size:10},boxWidth:10,padding:6}},tooltip:{backgroundColor:'#111119',borderColor:'#2e2e50',borderWidth:1,titleColor:'#e0e0f0',bodyColor:'#9090b0',callbacks:{label:c=>`${c.label}: ${eur(c.raw)}`}}}}});
+}
+
+// Top 5 / Flop 5
+function renderPerformers(items){
+  const el=document.getElementById('dash-performers');
+  if(!el)return;
+  const withH=items.filter(i=>i.priceHistory.length>0);
+  if(withH.length<2){el.innerHTML='';return;}
+  const sorted=[...withH].sort((a,b)=>plp(b)-plp(a));
+  const top=sorted.slice(0,5);
+  const flop=[...sorted].reverse().slice(0,5);
+  const rows=(list,cls)=>list.map((it,i)=>`
+    <li class="perf-item" onclick="nav('detail','${it.id}')" style="cursor:pointer">
+      <span class="perf-rank">#${i+1}</span>
+      <span class="perf-name" title="${it.name}">${it.name}</span>
+      <span class="perf-val ${cls}">${sgn(plp(it))}${new Intl.NumberFormat('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1}).format(plp(it))}%</span>
+    </li>`).join('');
+  el.innerHTML=`
+    <div class="card"><div class="section-header"><span class="section-title">🏆 Top 5</span></div><ul class="perf-list">${rows(top,'positive')}</ul></div>
+    <div class="card"><div class="section-header"><span class="section-title">📉 Flop 5</span></div><ul class="perf-list">${rows(flop,'negative')}</ul></div>`;
+}
+
+// Take-Profit Alerts
+function renderTakeProfit(items){
+  const el=document.getElementById('dash-takeprofit');
+  if(!el)return;
+  const hits=items.filter(it=>it.targetPrice>0&&it.priceHistory.length>0&&curP(it)>=it.targetPrice);
+  const near=items.filter(it=>it.targetPrice>0&&it.priceHistory.length>0&&curP(it)<it.targetPrice&&curP(it)>=it.targetPrice*0.85&&!hits.includes(it));
+  if(!hits.length&&!near.length){el.innerHTML='';return;}
+  const row=(it,reached)=>{
+    const pct=Math.min(100,(curP(it)/it.targetPrice)*100);
+    return`<div class="tp-alert">
+      <div style="flex:1;min-width:0">
+        <div class="tp-alert-name">${reached?'🎯':'📈'} ${it.name}</div>
+        <div class="tp-alert-meta">${reached?'Ziel erreicht':'Nahe am Ziel'} · Aktuell: ${eur(curP(it))} · Ziel: ${eur(it.targetPrice)}</div>
+        <div class="tp-progress"><div class="tp-progress-bar" style="width:${pct}%;${!reached?'background:var(--gold)':''}"></div></div>
+      </div>
+      <a onclick="nav('detail','${it.id}')" style="cursor:pointer;color:var(--gold);font-size:13px;white-space:nowrap">Details →</a>
+    </div>`;
+  };
+  el.innerHTML=`<div class="card"><div class="section-header"><span class="section-title">🎯 Verkaufsziele</span></div>${hits.map(i=>row(i,true)).join('')}${near.map(i=>row(i,false)).join('')}</div>`;
+}
+
+// ── DASHBOARD ──
+function renderDash(){
+  const items=DB.getItems();
+  const tI=items.reduce((s,i)=>s+inv(i),0);
+  const tV=items.reduce((s,i)=>s+curV(i),0);
+  const tP=tV-tI,tPp=tI>0?(tP/tI)*100:0;
+  const wH=items.filter(i=>i.priceHistory.length>0);
+  let bh='<div class="stat-value" style="font-size:14px;color:var(--text-m)">—</div><div class="stat-sub">Noch keine Items</div>';
+  if(wH.length){const b=wH.reduce((a,x)=>plp(a)>=plp(x)?a:x);const n=b.name.length>20?b.name.slice(0,20)+'…':b.name;bh=`<div class="stat-value ${plcls(plv(b))}" style="font-size:15px">${n}</div><div class="stat-sub" style="color:${plv(b)>=0?'var(--green)':'var(--red)'}">${pct(plp(b))}</div>`;}
+  else if(items.length){bh='<div class="stat-value" style="font-size:14px;color:var(--text-m)">Preis eintragen</div><div class="stat-sub">für Wertentwicklung</div>';}
+  document.getElementById('dash-stats').innerHTML=`
+    <div class="stat-card"><div class="stat-label">Investiert</div><div class="stat-value gold">${eur(tI)}</div><div class="stat-sub">${items.length} Item${items.length!==1?'s':''} · ${items.reduce((s,i)=>s+i.quantity,0)} Stück</div></div>
+    <div class="stat-card"><div class="stat-label">Aktueller Wert</div><div class="stat-value">${eur(tV)}</div><div class="stat-sub">${wH.length} mit Preisverlauf</div></div>
+    <div class="stat-card"><div class="stat-label">Gewinn / Verlust</div><div class="stat-value ${plcls(tP)}">${sgn(tP)}${eur(tP)}</div><div class="stat-sub" style="color:${tP>=0?'var(--green)':'var(--red)'}">${pct(tPp)}</div></div>
+    <div class="stat-card"><div class="stat-label">Bester Performer</div>${bh}</div>`;
+  const hist=portHist(items);
+  document.getElementById('dash-hint').textContent=hist.length?`${hist.length} Datenpunkt${hist.length!==1?'e':''}`:' ';
+  if(chartPort){chartPort.destroy();chartPort=null;}
+  const ctx=document.getElementById('portfolio-chart').getContext('2d');
+  if(hist.length>=1){chartPort=new Chart(ctx,{type:'line',data:{labels:hist.map(h=>fdate(h.date)),datasets:[lineDS('Portfolio-Wert',hist.map(h=>h.value),'rgb(240,180,41)',false,true),lineDS('Investiert',hist.map(()=>tI),'rgb(115,115,138)',true,false)]},options:COPTS(eur)});}
+  else{ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);ctx.fillStyle='#73738a';ctx.font='14px Inter';ctx.textAlign='center';ctx.fillText('Trage CardMarket-Preise ein, um den Verlauf zu sehen',ctx.canvas.width/2,120);}
+  renderMonthlyChart(items);
+  renderDistChart(items);
+  renderPerformers(items);
+  renderTakeProfit(items);
+  renderTable('dash-table',[...items].sort((a,b)=>curV(b)-curV(a)),true);
+}
+
+// ── COLLECTION ──
+function setView(m){collMode=m;document.getElementById('tog-table').classList.toggle('active',m==='table');document.getElementById('tog-gallery').classList.toggle('active',m==='gallery');renderColl();}
+function renderColl(){
+  const sf=document.getElementById('f-serie-f')?.value||'all';
+  const tf=document.getElementById('f-type-f')?.value||'all';
+  const lf=document.getElementById('f-lang-f')?.value||'all';
+  const so=document.getElementById('f-sort-f')?.value||'name';
+  let items=DB.getItems();
+  if(sf!=='all')items=items.filter(i=>i.serie===sf);
+  if(tf!=='all')items=items.filter(i=>i.type===tf);
+  if(lf!=='all')items=items.filter(i=>i.language===lf);
+  items.sort((a,b)=>({
+    'value-desc':()=>curV(b)-curV(a),'value-asc':()=>curV(a)-curV(b),
+    'pl-desc':()=>plp(b)-plp(a),'date-desc':()=>b.purchaseDate.localeCompare(a.purchaseDate),
+    'date-asc':()=>a.purchaseDate.localeCompare(b.purchaseDate),
+  }[so]||(()=>a.name.localeCompare(b.name,'de')))());
+  const el=document.getElementById('coll-content');
+  if(collMode==='gallery')renderGallery(el,items);
+  else el.innerHTML=`<div class="card table-wrap">${tableHTML(items,false)}</div>`;
+}
+
+// ── GALLERY ──
+function renderGallery(el,items){
+  if(!items.length){el.innerHTML=`<div class="empty-state"><h3>Keine Items gefunden</h3><p>Filter anpassen oder neues Item hinzufügen.</p><button class="btn btn-primary" onclick="openAddItem()">+ Hinzufügen</button></div>`;return;}
+  el.innerHTML=`<div class="gallery-grid">${items.map(it=>{
+    const p=plv(it);const pp=plp(it);
+    const setShort=setDisplayName(it);
+    const imgEl=it.imageData?`<img src="${imgSrc(it.imageData)}" class="gcard-img" alt="${it.name}" loading="lazy">`:`<div class="gcard-img-ph">${typeIcon(it.type)}</div>`;
+    return `<div class="gcard" onclick="nav('detail','${it.id}')">
+      ${imgEl}
+      <div class="gcard-body">
+        ${typeBadge(it.type)}
+        <div class="gcard-name" style="margin-top:8px" title="${it.name}">${it.name}</div>
+        <div class="gcard-set" title="${setShort}">${setShort}</div>
+        <div class="gcard-val">${eur(curV(it))}</div>
+        <div class="gcard-pl ${plcls(p)}">${sgn(p)}${eur(p)} (${pct(pp)})</div>
+      </div></div>`;
+  }).join('')}</div>`;
+}
+
+// ── TABLE ──
+function tableHTML(items,compact){
+  if(!items.length) return `<div class="empty-state"><h3>Noch keine Items</h3><p>Füge deine ersten Pokémon Items hinzu.</p><button class="btn btn-primary" onclick="openAddItem()">+ Hinzufügen</button></div>`;
+  const rows=items.map(it=>{
+    const p=plv(it);const pp=plp(it);const nh=!it.priceHistory.length;
+    const th=it.imageData?`<img src="${imgSrc(it.imageData)}" class="thumb" alt="" loading="lazy">`:`<div class="thumb-ph">${typeIcon(it.type)}</div>`;
+    const setShort=setDisplayName(it);
+    return `<tr onclick="nav('detail','${it.id}')" style="cursor:pointer">
+      <td style="width:44px;padding-right:4px">${th}</td>
+      <td><div style="font-weight:500">${it.name}</div><div style="font-size:12px;color:var(--text-m);margin-top:2px">${setShort}</div></td>
+      ${compact?'':it.serie?`<td><span class="badge badge-serie">${it.serie}</span></td>`:'<td style="color:var(--text-m)">—</td>'}
+      ${compact?'':'<td>'+typeBadge(it.type)+'</td>'}
+      <td>${langPill(it.language)}</td>
+      <td class="td-mono">${it.quantity}×</td>
+      <td class="td-mono">${eur(it.purchasePrice)}</td>
+      <td class="td-mono">${eur(curP(it))}${nh?'<span style="color:var(--text-m);font-size:11px"> EK</span>':''}</td>
+      <td><div class="pl ${plcls(p)}">${sgn(p)}${eur(p)}</div><div style="font-size:12px;color:${p>=0?'var(--green)':'var(--red)'};">${pct(pp)}</div></td>
+      <td style="color:var(--text-m);font-size:13px">${fdate(it.purchaseDate)}</td>
+      <td style="padding:8px 6px">${it.cardmarketUrl?`<a href="${it.cardmarketUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Auf CardMarket öffnen" style="color:var(--gold);font-size:13px;text-decoration:none">&#8599;</a>`:''}</td>
+    </tr>`;
+  }).join('');
+  return `<table><thead><tr><th></th><th>Name / Set</th>${compact?'':'<th>Serie</th><th>Typ</th>'}<th>Lang.</th><th>Menge</th><th>EK/Stück</th><th>Akt. Preis</th><th>G / V</th><th>Kauf</th><th style="width:24px"></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function renderTable(id,items,compact){document.getElementById(id).innerHTML=tableHTML(items,compact);}
+
+// ── DETAIL ──
+function renderDetail(itemId){
+  const it=DB.getItem(itemId);if(!it){nav('collection');return;}
+  const p=plv(it),pp=plp(it);
+  const lastDate=it.priceHistory.length?it.priceHistory[it.priceHistory.length-1].date:null;
+  const imgEl=it.imageData?`<img src="${imgSrc(it.imageData)}" alt="${it.name}" style="width:100%;height:100%;object-fit:cover;display:block">`:`<div class="detail-img-ph">${typeIcon(it.type)}</div>`;
+  const setLabel=setDisplayName(it);
+  const histList=it.priceHistory.length===0?'<div style="padding:16px 0;color:var(--text-m);font-size:13px">Noch kein Preis eingetragen.</div>':[...it.priceHistory].reverse().map((ph,ri)=>{const ri2=it.priceHistory.length-1-ri;return`<div class="ph-item"><div><div class="td-mono" style="font-size:15px;font-weight:500">${eur(ph.price)}</div><div style="font-size:12px;color:var(--text-m);margin-top:2px">${fdate(ph.date)}${ph.note?' · '+ph.note:''}</div></div><button class="btn btn-danger btn-xs" onclick="event.stopPropagation();delPriceEntry('${itemId}',${ri2})">✕</button></div>`;}).join('');
+  document.getElementById('detail-content').innerHTML=`
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap">
+      <div><div class="detail-name">${it.name}</div>
+        <div class="detail-meta">
+          ${typeBadge(it.type)}${langPill(it.language)}${sourcePill(it.source)}${condBadge(it.condition)}
+          ${it.serie?`<span class="badge badge-serie">${it.serie}</span>`:''}
+          ${setLabel?`<span style="font-size:13px;color:var(--text-m)">${setLabel}</span>`:''}
+          ${it.cardNumber?`<span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-m)">#${it.cardNumber}</span>`:''}
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
+        ${it.cardmarketUrl?`<a href="${it.cardmarketUrl}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="color:var(--gold);border-color:var(--gold)">&#8599; CardMarket</a>`:''}
+        <button class="btn btn-secondary btn-sm" onclick="openEditItem('${itemId}')">Bearbeiten</button>
+        <button class="btn btn-danger btn-sm"    onclick="deleteItem('${itemId}')">Löschen</button>
+      </div>
+    </div>
+    <div class="detail-layout">
+      <div class="detail-img">${imgEl}</div>
+      <div><div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">Investiert</div><div class="stat-value gold">${eur(inv(it))}</div><div class="stat-sub">${it.quantity}× ${eur(it.purchasePrice)} · ${fdate(it.purchaseDate)}</div></div>
+        <div class="stat-card"><div class="stat-label">Aktueller Wert</div><div class="stat-value">${eur(curV(it))}</div><div class="stat-sub">${lastDate?'Stand '+fdate(lastDate):'Kaufpreis als Basis'}</div></div>
+        <div class="stat-card"><div class="stat-label">Gewinn / Verlust</div><div class="stat-value ${plcls(p)}">${sgn(p)}${eur(p)}</div><div class="stat-sub" style="color:${p>=0?'var(--green)':'var(--red)'}">${pct(pp)}</div></div>
+        <div class="stat-card"><div class="stat-label">Details</div>
+          <div style="font-size:13px;color:var(--text-d);margin-top:6px;display:flex;flex-direction:column;gap:4px">
+            ${it.condition?`<span>${condBadge(it.condition)}</span>`:''}
+            ${it.storageLocation?`<span>📦 ${it.storageLocation}</span>`:''}
+            ${it.dealer?`<span>🏪 ${it.dealer}</span>`:''}
+            ${it.targetPrice?`<span style="color:var(--gold)">🎯 Ziel: ${eur(it.targetPrice)}</span>`:''}
+            <span style="color:var(--text-m)">${it.notes||(!it.condition&&!it.storageLocation&&!it.dealer&&!it.targetPrice?'—':'')}</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="detail-grid">
+      <div class="card">
+        <div class="section-header"><span class="section-title">Preisverlauf</span><button class="btn btn-primary btn-sm" onclick="openAddPrice('${itemId}')">+ Preis</button></div>
+        <div class="chart-container"><canvas id="price-chart"></canvas></div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="section-header"><span class="section-title">CardMarket-Einträge</span><span style="font-size:12px;color:var(--text-m)">${it.priceHistory.length} Einträge</span></div>
+        <div style="max-height:260px;overflow-y:auto;padding-right:4px">${histList}</div>
+      </div>
+    </div>`;
+  if(chartPrice){chartPrice.destroy();chartPrice=null;}
+  const ctx=document.getElementById('price-chart')?.getContext('2d');
+  if(!ctx)return;
+  if(it.priceHistory.length>=2){chartPrice=new Chart(ctx,{type:'line',data:{labels:it.priceHistory.map(ph=>fdate(ph.date)),datasets:[lineDS('CardMarket Preis',it.priceHistory.map(ph=>ph.price),'rgb(240,180,41)',false,true),lineDS('Kaufpreis',it.priceHistory.map(()=>it.purchasePrice),'rgb(115,115,138)',true,false)]},options:COPTS(eur)});}
+  else{ctx.fillStyle='#73738a';ctx.font='13px Inter';ctx.textAlign='center';ctx.fillText(it.priceHistory.length===0?'Noch keine Preiseinträge':'1 Eintrag – mind. 2 für Chart',ctx.canvas.width/2,110);}
+}
+
+// ── ITEM MODAL ──
+const CARD_TYPES = new Set(['card','card_sealed']);
+
+function openAddItem(){
+  editId=null;pendImg=null;
+  document.getElementById('modal-item-title').textContent='Item hinzufügen';
+  ['f-name','f-price','f-cardno','f-notes','f-img-url','f-cardmarket','f-dealer','f-target','f-storage'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-condition').value='';
+  updateCmPreview('');
+  document.getElementById('f-type').value='etb';
+  document.getElementById('f-lang').value='DE';
+  document.getElementById('f-qty').value='1';
+  document.getElementById('f-date').value=today();
+  document.getElementById('f-serie').value='';
+  document.getElementById('lookup-status').textContent='';
+  setSource('bought');
+  onTypeChange('etb');
+  resetImg();updateSetOpts();
+  document.getElementById('modal-item').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('f-name').focus(),50);
+}
+function openEditItem(id){
+  const it=DB.getItem(id);if(!it)return;
+  editId=id; pendImg=it.imageData||null;
+  document.getElementById('modal-item-title').textContent='Item bearbeiten';
+  document.getElementById('f-name').value=it.name;
+  document.getElementById('f-type').value=it.type;
+  document.getElementById('f-lang').value=it.language;
+  document.getElementById('f-price').value=it.purchasePrice;
+  document.getElementById('f-qty').value=it.quantity;
+  document.getElementById('f-date').value=it.purchaseDate;
+  document.getElementById('f-notes').value=it.notes||'';
+  document.getElementById('f-cardno').value=it.cardNumber||'';
+  document.getElementById('f-cardmarket').value=it.cardmarketUrl||'';
+  updateCmPreview(it.cardmarketUrl||'');
+  document.getElementById('f-condition').value=it.condition||'';
+  document.getElementById('f-dealer').value=it.dealer||'';
+  document.getElementById('f-target').value=it.targetPrice||'';
+  document.getElementById('f-storage').value=it.storageLocation||'';
+  document.getElementById('lookup-status').textContent='';
+  document.getElementById('f-img-url').value='';
+  document.getElementById('f-serie').value=it.serie||'';
+  setSource(it.source||'bought');
+  onTypeChange(it.type);
+  updateSetOpts(it.setCode||it.set);
+  if(pendImg)showImg(imgSrc(pendImg));else resetImg();
+  document.getElementById('modal-item').classList.remove('hidden');
+}
+function onTypeChange(v){
+  const isCard=CARD_TYPES.has(v);
+  document.getElementById('f-cardno-grp').style.display=isCard?'flex':'none';
+  document.getElementById('f-source-grp').style.display=isCard?'block':'none';
+  document.getElementById('lookup-status').textContent='';
+  if(!isCard) setSource('bought',true); // Preis-Label zurücksetzen für Nicht-Karten
+}
+
+// source: 'bought' | 'pulled' | 'gift'
+// silent=true → kein UI-Update der Toggle-Buttons (nur intern)
+function setSource(source, silent=false){
+  document.getElementById('f-source').value=source;
+  if(!silent){
+    document.querySelectorAll('#f-source-btns .btn-tog').forEach(b=>{
+      b.classList.toggle('active', b.dataset.source===source);
+    });
+  }
+  const LABELS={
+    bought: 'Kaufpreis (€ pro Stück)',
+    pulled: 'Preis des Boosters (€, optional)',
+    gift:   'Geschätzter Wert (€, optional)',
+  };
+  const PLACEHOLDERS={
+    bought: '0.00',
+    pulled: 'leer lassen wenn Geschenk',
+    gift:   '0.00',
+  };
+  document.getElementById('f-price-label').textContent=LABELS[source]||LABELS.bought;
+  document.getElementById('f-price').placeholder=PLACEHOLDERS[source]||'0.00';
+}
+function onLangChange(lang){
+  updateSetOpts(document.getElementById('f-set-sel').value||document.getElementById('f-set-custom').value);
+}
+function saveItem(){
+  const name=document.getElementById('f-name').value.trim();
+  const source=document.getElementById('f-source').value||'bought';
+  const priceRaw=document.getElementById('f-price').value;
+  const priceOptional=(source==='pulled'||source==='gift');
+  const price=priceRaw===''&&priceOptional ? 0 : parseFloat(priceRaw);
+  const qty=Math.max(1,parseInt(document.getElementById('f-qty').value)||1);
+  const date=document.getElementById('f-date').value;
+  const serieRaw=document.getElementById('f-serie').value;
+  const serie=serieRaw||'';
+  const selSet=document.getElementById('f-set-sel').value;
+  const isCustom=selSet==='__custom';
+  const setCode=(!isCustom&&selSet)?selSet:'';
+  const setVal=isCustom?document.getElementById('f-set-custom').value.trim():(selSet?setCodeToLabel(selSet):'');
+  if(!name){alert('Bitte einen Namen eingeben.');return;}
+  if(!priceOptional&&(isNaN(price)||price<0)){alert('Bitte einen gültigen Kaufpreis eingeben.');return;}
+  if(priceOptional&&!isNaN(price)&&price<0){alert('Preis darf nicht negativ sein.');return;}
+  if(!date){alert('Bitte ein Kaufdatum wählen.');return;}
+  const targetPrice=parseFloat(document.getElementById('f-target').value)||0;
+  const data={name,type:document.getElementById('f-type').value,language:document.getElementById('f-lang').value,serie,set:setVal,setCode,cardNumber:document.getElementById('f-cardno').value.trim(),source,purchasePrice:isNaN(price)?0:price,quantity:qty,purchaseDate:date,condition:document.getElementById('f-condition').value,dealer:document.getElementById('f-dealer').value.trim(),targetPrice,storageLocation:document.getElementById('f-storage').value.trim(),notes:document.getElementById('f-notes').value.trim(),cardmarketUrl:document.getElementById('f-cardmarket').value.trim(),imageData:pendImg||''};
+  if(editId){DB.updateItem(editId,data);closeModal('modal-item');nav('detail',editId);}
+  else{DB.addItem({id:uid(),priceHistory:[],...data});closeModal('modal-item');nav('collection');renderColl();}
+}
+function setCodeToLabel(code){
+  const s=findSetByCode(code);
+  return s?s.de:'';
+}
+function deleteItem(id){if(!confirm('Item wirklich löschen? Alle Preisdaten gehen verloren.'))return;DB.deleteItem(id);nav('collection');}
+
+// ── SET DROPDOWN ──
+function updateSetOpts(current){
+  const serie=document.getElementById('f-serie').value;
+  const lang=(document.getElementById('f-lang')?.value||'DE')==='EN'?'en':'de';
+  const serieData=SERIES_DATA[serie];
+  const sets=serieData?serieData.sets:[];
+  const sel=document.getElementById('f-set-sel');
+  if(!sets.length){
+    sel.innerHTML='<option value="">— kein Set —</option><option value="__custom">Benutzerdefiniert …</option>';
+  } else {
+    sel.innerHTML='<option value="">-- wählen --</option>'+
+      sets.map(s=>`<option value="${s.code}">${s[lang]||s.de}</option>`).join('')+
+      '<option value="__custom">Benutzerdefiniert …</option>';
+  }
+  // restore selection
+  if(current){
+    // try by code first
+    const byCode=[...sel.options].find(o=>o.value===current);
+    if(byCode){ sel.value=current; }
+    else {
+      // try matching the DE/EN label
+      const setObj=sets.find(s=>s.de===current||s.en===current||s.code===current);
+      if(setObj){ sel.value=setObj.code; }
+      else {
+        sel.value='__custom';
+        document.getElementById('f-set-custom').value=current;
+        document.getElementById('f-set-custom').style.display='block';
+      }
+    }
+  }
+  checkCustomSet();
+}
+function checkCustomSet(){document.getElementById('f-set-custom').style.display=document.getElementById('f-set-sel').value==='__custom'?'block':'none';}
+
+// ── CARD LOOKUP (lokale Datenbank) ──
+function onCardNoInput(){
+  document.getElementById('lookup-status').textContent='';
+}
+function updateCmPreview(url){
+  const btn=document.getElementById('f-cardmarket-preview');
+  if(url&&url.startsWith('http')){btn.href=url;btn.style.display='inline-flex';}
+  else{btn.style.display='none';}
+}
+
+// Gibt die eingebundene Kartendatenbank zurück (window.CARDS_EN aus cards_en.js)
+function loadCardsDB(){
+  if(cardsDB) return cardsDB;
+  if(window.CARDS_EN){ cardsDB=window.CARDS_EN; return cardsDB; }
+  document.getElementById('lookup-status').innerHTML=
+    '<span class="err">cards_en.js nicht geladen – liegt die Datei neben pokevault.html?</span>';
+  return null;
+}
+
+function lookupCard(){
+  const cardNo=document.getElementById('f-cardno').value.trim();
+  const setCode=document.getElementById('f-set-sel').value;
+  const status=document.getElementById('lookup-status');
+
+  if(!cardNo){alert('Bitte zuerst eine Kartennummer eingeben.');return;}
+  if(!setCode||setCode==='__custom'){alert('Bitte ein Set auswählen (kein benutzerdefiniertes Set).');return;}
+
+  const setObj=findSetByCode(setCode);
+  if(!setObj||!setObj.apiId){
+    status.innerHTML='<span class="err">Kein Daten-Eintrag für dieses Set.</span>';
+    return;
+  }
+
+  const db=loadCardsDB();
+  if(!db) return;
+
+  const setData=db[setObj.apiId];
+  if(!setData){
+    status.innerHTML=`<span class="err">Set "${setObj.apiId}" nicht in Datenbank (ggf. build_cards.js erneut ausführen).</span>`;
+    return;
+  }
+
+  const name=setData[cardNo];
+  if(name){
+    const nameField=document.getElementById('f-name');
+    if(!nameField.value||confirm(`Karte gefunden: "${name}"\n(englischer Name – kann angepasst werden)\nNamen übernehmen?`)){
+      nameField.value=name;
+    }
+    status.innerHTML=`<span class="ok">✓ ${name} · #${cardNo} · EN-Name, ggf. anpassen</span>`;
+  } else {
+    status.innerHTML=`<span class="err">Nr. ${cardNo} nicht gefunden in ${setObj.apiId}</span>`;
+  }
+}
+
+// ── IMAGE ──
+function onImgFile(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=async()=>{
+      const c=document.createElement('canvas');
+      const M=600;const sc=Math.min(1,M/Math.max(img.width,img.height));
+      c.width=img.width*sc;c.height=img.height*sc;
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      const b64=c.toDataURL('image/jpeg',.8);
+      if(GH.isConfigured()){
+        // Vorschau sofort zeigen, dann hochladen
+        showImg(b64);
+        const zone=document.getElementById('img-zone');
+        const hint=document.createElement('div');
+        hint.id='img-upload-hint';
+        hint.style.cssText='position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:11px;color:var(--gold)';
+        hint.textContent='↑ Wird auf GitHub hochgeladen…';
+        zone.appendChild(hint);
+        try{
+          const path=await GH.uploadImage(b64);
+          pendImg=path;
+          hint.textContent='✓ Gespeichert in /images/';
+          setTimeout(()=>hint.remove(),2500);
+        }catch(err){
+          pendImg=b64; // Fallback auf Base64
+          hint.style.color='var(--red)';
+          hint.textContent='⚠ Upload fehlgeschlagen, lokal gespeichert';
+          setTimeout(()=>hint.remove(),3000);
+        }
+      } else {
+        pendImg=b64; showImg(b64);
+      }
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);input.value='';
+}
+function onImgUrl(url){if(!url.trim())return;pendImg=url.trim();showImg(url.trim());}
+function showImg(src){
+  const zone=document.getElementById('img-zone');
+  document.getElementById('img-prev').src=src;document.getElementById('img-prev').style.display='block';
+  document.getElementById('img-ph').style.display='none';
+  document.getElementById('img-clear').classList.remove('hidden');
+  zone.classList.add('has-img');
+}
+function resetImg(){
+  document.getElementById('img-prev').src='';document.getElementById('img-prev').style.display='none';
+  document.getElementById('img-ph').style.display='flex';
+  document.getElementById('img-clear').classList.add('hidden');
+  document.getElementById('img-zone').classList.remove('has-img');
+  pendImg=null;
+}
+function clearImg(e){e.stopPropagation();document.getElementById('f-img-url').value='';resetImg();}
+
+// Drag & drop
+document.addEventListener('DOMContentLoaded',()=>{
+  const z=document.getElementById('img-zone');if(!z)return;
+  z.addEventListener('dragover',e=>{e.preventDefault();z.style.borderColor='var(--gold)';});
+  z.addEventListener('dragleave',()=>z.style.borderColor='');
+  z.addEventListener('drop',e=>{e.preventDefault();z.style.borderColor='';const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/'))onImgFile({files:[f],value:''});});
+});
+
+// ── PRICE MODAL ──
+function openAddPrice(itemId){
+  const it=DB.getItem(itemId);if(!it)return;
+  priceItemId=itemId;
+  document.getElementById('price-item-name').textContent=it.name;
+  document.getElementById('fp-date').value=today();
+  document.getElementById('fp-price').value='';
+  document.getElementById('fp-note').value='';
+  // PriceCharting-Link aus Item-Name + Set bauen
+  const pcLink=document.getElementById('price-pc-link');
+  if(pcLink){
+    const q=encodeURIComponent([it.name, it.set||''].filter(Boolean).join(' '));
+    pcLink.href=`https://www.pricecharting.com/search-products?q=${q}&type=prices`;
+  }
+  document.getElementById('modal-price').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('fp-price').focus(),50);
+}
+function savePriceEntry(){const price=parseFloat(document.getElementById('fp-price').value);const date=document.getElementById('fp-date').value;if(isNaN(price)||price<=0){alert('Bitte einen gültigen Preis eingeben.');return;}if(!date){alert('Bitte ein Datum wählen.');return;}DB.addPE(priceItemId,{date,price,note:document.getElementById('fp-note').value.trim()});closeModal('modal-price');renderDetail(priceItemId);}
+function delPriceEntry(itemId,idx){if(!confirm('Diesen Preiseintrag löschen?'))return;DB.delPE(itemId,idx);renderDetail(itemId);}
+
+// ── MODALS ──
+function closeModal(id){document.getElementById(id).classList.add('hidden');}
+document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===el)closeModal(el.id);}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(el=>closeModal(el.id));});
+
+// ── EXPORT / IMPORT ──
+function exportData(){const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([JSON.stringify(DB.get(),null,2)],{type:'application/json'})),download:`pokevault_${today()}.json`});a.click();URL.revokeObjectURL(a.href);}
+function importData(input){const file=input.files[0];if(!file)return;const r=new FileReader();r.onload=e=>{try{const data=JSON.parse(e.target.result);if(!Array.isArray(data.items)){alert('Ungültiges Format.');return;}if(confirm(`${data.items.length} Items importieren? Bestehende Daten werden überschrieben.`)){DB.save(data);nav(curView);}}catch(err){alert('Fehler: '+err.message);}input.value='';};r.readAsText(file);}
+
+async function init(){
+  GH.loadConfig();
+  if(GH.isConfigured()){
+    ghStatus('loading');
+    try{
+      const data=await GH.loadCollection();
+      if(data?.items){ DB.saveLocal(data); }
+      ghStatus('ok');
+    }catch(e){ ghStatus('error',e.message); console.warn('GH init:',e); }
+  }
+  nav('dashboard');
+}
+init();
+</script>
+</body>
+</html>
