@@ -158,6 +158,15 @@
     .gh-pill.gh-saving  { background:rgba(240,180,41,.1);  border-color:rgba(240,180,41,.3);  color:var(--gold);  }
     .gh-pill.gh-error   { background:rgba(248,113,113,.1); border-color:rgba(248,113,113,.3); color:var(--red);   }
     .gh-pill.gh-off     { background:var(--bg-input); border-color:var(--border); color:var(--text-m); }
+    /* Toast-Benachrichtigungen */
+    #toast-stack { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:2000; display:flex; flex-direction:column; gap:8px; align-items:center; pointer-events:none; width:min(92vw,460px); }
+    .toast { pointer-events:auto; background:var(--bg-card); border:1px solid var(--border-b); border-left:3px solid var(--gold); border-radius:var(--radius-sm); padding:11px 16px; font-size:12.5px; line-height:1.5; color:var(--text); box-shadow:0 8px 28px rgba(0,0,0,.45); animation:toast-in .25s ease-out; max-width:100%; }
+    .toast.t-ok    { border-left-color:var(--green); }
+    .toast.t-warn  { border-left-color:var(--gold); }
+    .toast.t-error { border-left-color:var(--red); }
+    .toast.t-out   { animation:toast-out .25s ease-in forwards; }
+    @keyframes toast-in  { from{opacity:0; transform:translateY(12px) scale(.97);} to{opacity:1; transform:translateY(0) scale(1);} }
+    @keyframes toast-out { from{opacity:1; transform:translateY(0) scale(1);} to{opacity:0; transform:translateY(8px) scale(.97);} }
     /* Settings modal */
     .settings-info { background:var(--bg-input); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:16px; font-size:12px; color:var(--text-m); line-height:1.7; }
     .settings-info a { color:var(--gold); }
@@ -175,6 +184,8 @@
   </style>
 </head>
 <body>
+
+<div id="toast-stack"></div>
 
 <nav>
   <div class="nav-logo">PokéVault <span>sealed tracker</span></div>
@@ -808,6 +819,18 @@ const GH = {
   }
 };
 
+// ── TOAST (kurze Hinweis-Benachrichtigungen unten am Bildschirmrand) ──
+function toast(msg,type='warn',duration=5000){
+  const stack=document.getElementById('toast-stack'); if(!stack) return;
+  const cls={ok:'t-ok',warn:'t-warn',error:'t-error'}[type]||'t-warn';
+  const el=document.createElement('div');
+  el.className=`toast ${cls}`;
+  el.textContent=msg;
+  stack.appendChild(el);
+  setTimeout(()=>{ el.classList.add('t-out'); setTimeout(()=>el.remove(),260); },duration);
+  return el;
+}
+
 function imgSrc(d){ if(!d) return ''; if(d.startsWith('data:')||d.startsWith('http')) return d; return GH.isConfigured()?GH.imageUrl(d):d; }
 
 function ghStatus(state,msg=''){
@@ -850,7 +873,14 @@ function clearGHConfig(){ if(!confirm('GitHub-Verbindung trennen? Lokale Daten b
 const DB = {
   K:'pokevault_v2',
   get(){try{return JSON.parse(localStorage.getItem(this.K)||'{"items":[]}')}catch{return{items:[]}}},
-  saveLocal(d){localStorage.setItem(this.K,JSON.stringify(d))},
+  _write(d){ localStorage.setItem(this.K,JSON.stringify(d)); }, // wirft bei vollem Speicher (QuotaExceededError)
+  saveLocal(d){
+    try{ this._write(d); }
+    catch(e){
+      if(e&&(e.name==='QuotaExceededError'||e.code===22||e.code===1014)){ onStorageFull(d); }
+      else { console.error('Speicherfehler:',e); throw e; }
+    }
+  },
   save(d){this.saveLocal(d); if(GH.isConfigured()) GH.scheduleSave(d);},
   getItems(){return this.get().items},
   getItem(id){return this.getItems().find(i=>i.id===id)},
@@ -861,12 +891,57 @@ const DB = {
   delPE(itemId,idx){const db=this.get();const it=db.items.find(i=>i.id===itemId);if(it){it.priceHistory.splice(idx,1);this.save(db)}}
 };
 
+// ── SPEICHER-RETTUNG (lokaler Speicher voll) ──
+// Lagert lokal als Base64 gespeicherte Bilder (data:…) auf GitHub aus und ersetzt
+// sie durch kurze Pfad-Strings — das schafft i.d.R. sehr viel Platz im localStorage frei.
+async function migrateImagesToGH(){
+  if(!GH.isConfigured()) return {migrated:0,failed:0,total:0};
+  const db=DB.get();
+  const targets=db.items.filter(it=>it.imageData&&it.imageData.startsWith('data:'));
+  let migrated=0,failed=0;
+  for(const it of targets){
+    try{ it.imageData=await GH.uploadImage(it.imageData); migrated++; }
+    catch(e){ failed++; console.warn('Bild-Migration fehlgeschlagen für',it.name,e); }
+  }
+  if(migrated>0){
+    try{ DB._write(db); }catch(e){ console.warn('Konnte ausgelagerte Bilder nicht lokal sichern:',e); }
+    if(GH.isConfigured()) GH.scheduleSave(db);
+    if(curView==='collection'||curView==='dashboard') nav(curView);
+  }
+  return {migrated,failed,total:targets.length};
+}
+
+let _quotaRecoveryRunning=false;
+async function onStorageFull(){
+  if(_quotaRecoveryRunning) return;
+  _quotaRecoveryRunning=true;
+  console.warn('⚠ localStorage voll — versuche aufzuräumen…');
+  try{
+    if(GH.isConfigured()){
+      toast('⚠ Lokaler Speicher voll — lagere Bilder auf GitHub aus, einen Moment…','warn',6000);
+      const r=await migrateImagesToGH();
+      if(r.migrated>0){
+        toast(`✓ ${r.migrated} Bild${r.migrated===1?'':'er'} auf GitHub ausgelagert — Speicher ist wieder frei. Bitte die letzte Änderung erneut speichern.`,'ok',8000);
+      } else if(r.total===0){
+        toast('⚠ Lokaler Speicher ist voll, aber es gibt keine lokal gespeicherten Bilder zum Auslagern. Bitte lade die Seite neu — möglicherweise hilft das, oder entferne ein paar große Einträge.','error',9000);
+      } else {
+        toast(`⚠ Auslagern fehlgeschlagen (${r.failed} Bild${r.failed===1?'':'er'}). Bitte Internetverbindung prüfen und erneut versuchen.`,'error',9000);
+      }
+    } else {
+      toast('⚠ Lokaler Speicher ist voll! Deine Bilder werden direkt im Browser gespeichert (Base64) und haben das Limit erreicht. 💡 Verbinde GitHub in den Einstellungen (⚙ oben rechts) — dann werden neue Bilder dort statt lokal gespeichert. Bestehende Bilder werden danach automatisch ausgelagert.','error',12000);
+    }
+  } finally { _quotaRecoveryRunning=false; }
+}
+
 // ── COMPUTED ──
 const curP  = it => it.priceHistory.length ? it.priceHistory[it.priceHistory.length-1].price : it.purchasePrice;
 const curV  = it => curP(it)*it.quantity;
-const inv   = it => it.purchasePrice*it.quantity;
-const plv   = it => curV(it)-inv(it);
-const plp   = it => { const i=inv(it); return i>0?(plv(it)/i)*100:0; };
+const inv   = it => it.source==='gift' ? 0 : it.purchasePrice*it.quantity;
+// Basis für G/V-Berechnung: bei Geschenken = geschätzter Wert (wie Goldbarren-Analogie),
+// bei Käufen = Kaufpreis. Ausgaben bleiben davon unberührt (inv = 0 bei Geschenken).
+const basis = it => it.purchasePrice*it.quantity;
+const plv   = it => curV(it)-basis(it);
+const plp   = it => { const b=basis(it); return b>0?(plv(it)/b)*100:0; };
 const plcls = n  => n>=0?'positive':'negative';
 const sgn   = n  => n>=0?'+':'';
 const eur   = n  => new Intl.NumberFormat('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)+' €';
@@ -1131,7 +1206,12 @@ function renderDetail(itemId){
     <div class="detail-layout">
       <div class="detail-img">${imgEl}</div>
       <div><div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">Investiert</div><div class="stat-value gold">${eur(inv(it))}</div><div class="stat-sub">${it.quantity}× ${eur(it.purchasePrice)} · ${fdate(it.purchaseDate)}</div></div>
+        <div class="stat-card">
+          ${it.source==='gift'
+            ? `<div class="stat-label">&#127873; Geschenkt</div><div class="stat-value gold">${eur(0)}</div><div class="stat-sub">Gesch&auml;tzter Wert: ${eur(it.purchasePrice)} · ${fdate(it.purchaseDate)}</div>`
+            : `<div class="stat-label">Investiert</div><div class="stat-value gold">${eur(inv(it))}</div><div class="stat-sub">${it.quantity}&times; ${eur(it.purchasePrice)} · ${fdate(it.purchaseDate)}</div>`
+          }
+        </div>
         <div class="stat-card"><div class="stat-label">Aktueller Wert</div><div class="stat-value">${eur(curV(it))}</div><div class="stat-sub">${lastDate?'Stand '+fdate(lastDate):'Kaufpreis als Basis'}</div></div>
         <div class="stat-card"><div class="stat-label">Gewinn / Verlust</div><div class="stat-value ${plcls(p)}">${sgn(p)}${eur(p)}</div><div class="stat-sub" style="color:${p>=0?'var(--green)':'var(--red)'}">${pct(pp)}</div></div>
         <div class="stat-card"><div class="stat-label">Details</div>
@@ -1465,6 +1545,17 @@ async function init(){
     }catch(e){ ghStatus('error',e.message); console.warn('GH init:',e); }
   }
   nav('dashboard');
+  // Im Hintergrund: lokal als Base64 gespeicherte Bilder auf GitHub auslagern.
+  // Das spart massiv Platz im localStorage (Bilder oft >100KB als Base64 vs. wenige Bytes als Pfad)
+  // und beugt "Speicher voll"-Fehlern vor — z.B. bei Bildern, die vor dem Verbinden mit GitHub
+  // hochgeladen wurden oder bei denen der Upload damals fehlgeschlagen ist.
+  if(GH.isConfigured()){
+    setTimeout(()=>{
+      migrateImagesToGH().then(r=>{
+        if(r.migrated>0) console.info(`📦 ${r.migrated} Bild(er) automatisch auf GitHub ausgelagert (Speicher-Optimierung).`);
+      }).catch(e=>console.warn('Bild-Migration übersprungen:',e));
+    },4000);
+  }
 }
 init();
 </script>
