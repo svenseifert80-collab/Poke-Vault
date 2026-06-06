@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq2snlpdpbu2j",
+      "priceHistory": [],
+      "name": "Lucario VStar",
+      "type": "card",
+      "language": "DE",
+      "serie": "Sonderedition / Promo",
+      "set": "Promo-Set",
+      "setCode": "PR01",
+      "cardNumber": "SWSH291",
+      "source": "bought",
+      "purchasePrice": 3.5,
+      "quantity": 1,
+      "purchaseDate": "2024-01-10",
+      "condition": "mint",
+      "dealer": "https://www.pricecharting.com/game/pokemon-promo/lucario-vstar-swsh291?q=lucario+vstar+swsh291",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "",
+      "imageData": "images/1780776997633-sc23.jpg"
+    },
+    {
       "id": "mq2sf5gtm0efh",
       "priceHistory": [
         {
