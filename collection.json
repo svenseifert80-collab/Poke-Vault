@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq2sf5gtm0efh",
+      "priceHistory": [],
+      "name": "Pidgey",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Obsidianflammen",
+      "setCode": "OBF",
+      "cardNumber": "207",
+      "source": "pulled",
+      "purchasePrice": 5,
+      "quantity": 1,
+      "purchaseDate": "2026-06-06",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "",
+      "imageData": "images/1780776615621-8ton.jpg"
+    },
+    {
       "id": "mq2s8dcokk3n4",
       "priceHistory": [
         {
