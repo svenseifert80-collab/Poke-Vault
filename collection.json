@@ -1,0 +1,2536 @@
+{
+  "items": [
+    {
+      "id": "mq2e633qqgnt3",
+      "priceHistory": [
+        {
+          "date": "2025-09-06",
+          "price": 5,
+          "note": "Kaufpreis Booster"
+        },
+        {
+          "date": "2026-06-06",
+          "price": 16,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Arbok",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Gewalten der Zeit",
+      "setCode": "TEF",
+      "cardNumber": "176",
+      "source": "pulled",
+      "purchasePrice": 5,
+      "quantity": 1,
+      "purchaseDate": "2025-09-06",
+      "condition": "mint",
+      "dealer": "Roter Binder",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Temporal-Forces/Arbok-V2-TEF176?sellerCountry=7&language=3&minCondition=2",
+      "imageData": ""
+    },
+    {
+      "id": "mq2czte3dd3kg",
+      "priceHistory": [
+        {
+          "date": "2023-09-15",
+          "price": 5.5,
+          "note": "kurz nach release-Preis https://www.pricecharting.com/game/pokemon-scarlet-&-violet/miraidon-ex-253?q=miraidon+ex+253"
+        },
+        {
+          "date": "2026-06-06",
+          "price": 6,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Miraidon ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Karmesin & Purpur",
+      "setCode": "SVI",
+      "cardNumber": "253",
+      "source": "pulled",
+      "purchasePrice": 5,
+      "quantity": 1,
+      "purchaseDate": "2024-07-06",
+      "condition": "mint",
+      "dealer": "Roter BInder",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Scarlet-Violet/Miraidon-ex-V5-SVI253?sellerCountry=7&language=3",
+      "imageData": "images/1780755680282-mcja.jpg"
+    },
+    {
+      "id": "mq253da15uc4d",
+      "priceHistory": [
+        {
+          "date": "2024-06-15",
+          "price": 32,
+          "note": "Release-Preis https://www.pricecharting.com/game/pokemon-twilight-masquerade/eevee-188"
+        },
+        {
+          "date": "2026-06-06",
+          "price": 60,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Eevee",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Maskerade im Zwielicht",
+      "setCode": "TWM",
+      "cardNumber": "188",
+      "source": "pulled",
+      "purchasePrice": 5,
+      "quantity": 1,
+      "purchaseDate": "2025-07-14",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Twilight-Masquerade/Eevee-V2-TWM188?sellerCountry=7&language=1,3&minCondition=2",
+      "imageData": "images/1780755681216-78mg.jpg"
+    },
+    {
+      "id": "mpu69w1h54ysq",
+      "priceHistory": [
+        {
+          "date": "2024-02-10",
+          "price": 10,
+          "note": "Schätzwert nach pricecharting.com"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 18.9,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Koraidon ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Karmesin & Purpur",
+      "setCode": "SVI",
+      "cardNumber": "247",
+      "source": "pulled",
+      "purchasePrice": 5,
+      "quantity": 1,
+      "purchaseDate": "2024-02-10",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Scarlet-Violet/Koraidon-ex-V4-SVI247?sellerCountry=7&minCondition=2&isReverseHolo=Y",
+      "imageData": "images/1780755682427-i3le.jpg"
+    },
+    {
+      "id": "mpu5m68pbo9mi",
+      "priceHistory": [
+        {
+          "date": "2024-05-20",
+          "price": 8,
+          "note": "Preis Booster"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 25,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Machoke",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "177",
+      "source": "pulled",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Machoke-V2-MEW177?sellerCountry=7&minCondition=2&isReverseHolo=Y",
+      "imageData": "images/1780755683580-k2z2.jpg"
+    },
+    {
+      "id": "mpu56pmsvj95m",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 20.5,
+          "note": "Kaufpreis inkl. 0,50€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 40,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Pikachu",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Gipfel der Krone",
+      "setCode": "CRZ",
+      "cardNumber": "160",
+      "source": "bought",
+      "purchasePrice": 20.5,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228590779",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Crown-Zenith/Pikachu-CRZ160?sellerCountry=7&language=7&minCondition=2",
+      "imageData": "images/1780755684776-avi9.jpg"
+    },
+    {
+      "id": "mpu523biq3d15",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 10.5,
+          "note": "Kaufpreis inkl. 0,50€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 19,
+          "note": "Cardmarket günstigstes Angebot"
+        }
+      ],
+      "name": "Relaxo",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 51",
+      "source": "bought",
+      "purchasePrice": 10.5,
+      "quantity": 2,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228590779",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Snorlax-V1-SVP051?sellerCountry=7&language=7&minCondition=2",
+      "imageData": "images/1780755685925-vsj2.jpg"
+    },
+    {
+      "id": "mpu4wz5acm17z",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 3.5,
+          "note": "Kaufpreis inkl. 0,50€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 4.5,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Fliegendes Pikachu VMAX",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Celebrations",
+      "setCode": "CEL",
+      "cardNumber": "7",
+      "source": "bought",
+      "purchasePrice": 3.5,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228590779",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Celebrations/Flying-Pikachu-VMAX?sellerCountry=7&language=7&minCondition=2",
+      "imageData": "images/1780755686938-bf5v.jpg"
+    },
+    {
+      "id": "mpu4k68g31pcz",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 6.81,
+          "note": "Kaufpreis inkl. 0,42€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 10.9,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Felori",
+      "type": "card",
+      "language": "JP",
+      "serie": "Karmesin & Purpur",
+      "set": "Triplet Beat",
+      "setCode": "",
+      "cardNumber": "75",
+      "source": "bought",
+      "purchasePrice": 6.81,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228676337",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Triplet-Beat/Sprigatito-V2-sv1a075?sellerCountry=7&language=7&minCondition=2",
+      "imageData": "images/1780755687824-9mrx.jpg"
+    },
+    {
+      "id": "mpu4avjmpjynl",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 4.71,
+          "note": "Kaufpreis inkl. 0,42€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 10,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Relaxo",
+      "type": "card",
+      "language": "JP",
+      "serie": "Schwert & Schild",
+      "set": "Dark Phantasma",
+      "setCode": "",
+      "cardNumber": "77",
+      "source": "bought",
+      "purchasePrice": 4.71,
+      "quantity": 1,
+      "purchaseDate": "2026-05-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228676337",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Dark-Phantasma/Snorlax-V2-s10a077?sellerCountry=7&language=7&minCondition=2",
+      "imageData": "images/1780755689007-ziuu.jpg"
+    },
+    {
+      "id": "mpu40g91g8gj3",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 15.21,
+          "note": "Kaufpreis inkl. 0,22€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 40,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Pikachu",
+      "type": "card",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 88",
+      "source": "bought",
+      "purchasePrice": 15.21,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228680930",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Pikachu-SVP088?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755690222-4pr8.jpg"
+    },
+    {
+      "id": "mpu3v5ou005ym",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 15.57,
+          "note": "Kaufpreis inkl. 0,77€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 24,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Sprigatito",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Entwicklungen in Paldea",
+      "setCode": "PAL",
+      "cardNumber": "196",
+      "source": "bought",
+      "purchasePrice": 15.57,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228671676",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Paldea-Evolved/Sprigatito-V2-PAL196?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755691356-31xa.jpg"
+    },
+    {
+      "id": "mpu3s30zzffjd",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 9.76,
+          "note": "Kaufpreis inkl. 0,77€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 9.5,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Floragato",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Entwicklungen in Paldea",
+      "setCode": "PAL",
+      "cardNumber": "197",
+      "source": "bought",
+      "purchasePrice": 9.76,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228671676",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Paldea-Evolved/Floragato-V2-PAL197?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755692526-sp7n.jpg"
+    },
+    {
+      "id": "mpu3nde59qtkx",
+      "priceHistory": [
+        {
+          "date": "2025-08-31",
+          "price": 30.25,
+          "note": "Kaufpreis inkl. 0,77€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 40,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Piloswine",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Ewige Rivalen",
+      "setCode": "DRI",
+      "cardNumber": "78",
+      "source": "bought",
+      "purchasePrice": 30.25,
+      "quantity": 1,
+      "purchaseDate": "2025-08-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228671676",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Shrouded-Fable/Persian-V2-SFA078?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755693526-5pm1.jpg"
+    },
+    {
+      "id": "mpu3gkcef2b6q",
+      "priceHistory": [
+        {
+          "date": "2025-08-29",
+          "price": 25.2,
+          "note": "Kaufpreis inkl. 0,20€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 49,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Glumanda",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 44",
+      "source": "bought",
+      "purchasePrice": 25.2,
+      "quantity": 1,
+      "purchaseDate": "2025-08-29",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228329662",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Charmander-V1-SVP044?sellerCountry=7&language=3",
+      "imageData": "images/1780755694624-cegc.jpg"
+    },
+    {
+      "id": "mpu311l8l4s6n",
+      "priceHistory": [
+        {
+          "date": "2025-08-13",
+          "price": 16.14,
+          "note": "Kaufpreis inkl. 1,14€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 22,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Eevee ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 174",
+      "source": "bought",
+      "purchasePrice": 16.14,
+      "quantity": 2,
+      "purchaseDate": "2025-08-13",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1225638742",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Eevee-ex-SVP174?sellerCountry=7&language=3",
+      "imageData": "images/1780755695793-zvt5.jpg"
+    },
+    {
+      "id": "mpu2wqh45bmak",
+      "priceHistory": [
+        {
+          "date": "2025-08-13",
+          "price": 11.14,
+          "note": "Kaufpresi inkl. 1,14€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 15,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Eevee",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 173",
+      "source": "bought",
+      "purchasePrice": 11.14,
+      "quantity": 2,
+      "purchaseDate": "2025-08-13",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1225638742",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Eevee-V1-SVP173?sellerCountry=7&language=3",
+      "imageData": "images/1780755697006-pvbz.jpg"
+    },
+    {
+      "id": "mpu2qnyfpf028",
+      "priceHistory": [
+        {
+          "date": "2025-08-08",
+          "price": 5.13,
+          "note": "Kaufpreis inkl. 0,13€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 9,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Victini",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 208",
+      "source": "bought",
+      "purchasePrice": 5.13,
+      "quantity": 1,
+      "purchaseDate": "2025-08-08",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224888675",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Victini-V1-SVP208?sellerCountry=7&language=3",
+      "imageData": "images/1780755698067-8u2i.jpg"
+    },
+    {
+      "id": "mpu2mdcnsax48",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 9.25,
+          "note": "Kaufpreis inkl. 1,25€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 8,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Glaceon ex Stamp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "26",
+      "source": "bought",
+      "purchasePrice": 9.25,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681740",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Glaceon-ex-V1-xPRE026?sellerCountry=7&language=3",
+      "imageData": "images/1780755699145-ieqz.jpg"
+    },
+    {
+      "id": "mpu2cqgzvb837",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 7.6,
+          "note": "Kaufpreis inkl 0,10€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 7.5,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Sylveon ex Stamp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "41",
+      "source": "bought",
+      "purchasePrice": 7.6,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681736",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Sylveon-ex-xPRE041?sellerCountry=7&language=3",
+      "imageData": "images/1780755700240-4oxd.jpg"
+    },
+    {
+      "id": "mpu27408ty80e",
+      "priceHistory": [
+        {
+          "date": "2025-08-06",
+          "price": 7.75,
+          "note": "Kaufpreis inkl. 1,25€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 9,
+          "note": "CardMArket günstigstes Angebot"
+        }
+      ],
+      "name": "Victini",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 208",
+      "source": "bought",
+      "purchasePrice": 7.75,
+      "quantity": 1,
+      "purchaseDate": "2025-08-06",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224598069",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Victini-V1-SVP208?sellerCountry=7&language=3",
+      "imageData": "images/1780755701384-807r.jpg"
+    },
+    {
+      "id": "mpu2303a0v0kw",
+      "priceHistory": [
+        {
+          "date": "2025-08-08",
+          "price": 6.25,
+          "note": "Kaufpreis inkl. 1,25€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 9,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Victini",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 208",
+      "source": "bought",
+      "purchasePrice": 6.25,
+      "quantity": 1,
+      "purchaseDate": "2025-08-08",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224889471",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Victini-V1-SVP208?sellerCountry=7&language=3",
+      "imageData": "images/1780755702462-ng32.jpg"
+    },
+    {
+      "id": "mpu1whksviori",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 7.37,
+          "note": "Kaufpreis inkl. 1,25€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 8.85,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Jolteon ex Stamp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "30",
+      "source": "bought",
+      "purchasePrice": 7.37,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681739",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Jolteon-ex-xPRE030?sellerCountry=7&language=3",
+      "imageData": "images/1780755703492-5mn6.jpg"
+    },
+    {
+      "id": "mpu1rli19cn8k",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 21.08,
+          "note": "Kaufpreis inkl. 0,08€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 25,
+          "note": "KardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Umbreon ex Stamp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "60",
+      "source": "bought",
+      "purchasePrice": 21.08,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681746",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Umbreon-ex-xPRE060?sellerCountry=7&language=3",
+      "imageData": "images/1780755704665-sxrg.jpg"
+    },
+    {
+      "id": "mpu1p589b044c",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 7.08,
+          "note": "Kaufpreis inkl. 0,08€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 10,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Espeon ex Stemp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "34",
+      "source": "bought",
+      "purchasePrice": 7.08,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681746",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Espeon-ex-xPRE034?sellerCountry=7&language=3",
+      "imageData": "images/1780755705731-ojqy.jpg"
+    },
+    {
+      "id": "mpu1iwmlor619",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 9.25,
+          "note": "Kaufpreis inkl. 1,25€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 9,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Leafeon ex Stemp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "6",
+      "source": "bought",
+      "purchasePrice": 9.25,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681744",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Leafeon-ex-xPRE006?sellerCountry=7&language=3",
+      "imageData": "images/1780755706920-tkbe.jpg"
+    },
+    {
+      "id": "mpu1d67jxwxe7",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 13.24,
+          "note": "Kaufpreis + 1,25 Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 11.5,
+          "note": "Cardmarket günstigstes Angebot"
+        }
+      ],
+      "name": "Eevee ex mit Stemp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "75",
+      "source": "bought",
+      "purchasePrice": 13.24,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681742",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Eevee-ex-xPRE075?sellerCountry=7&language=3",
+      "imageData": "images/1780755708087-yz0r.jpg"
+    },
+    {
+      "id": "mpu19rn4gotvk",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 8.24,
+          "note": "Kaufpreis + 1,25 Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 10,
+          "note": "CardMerket günstigstes Angebot"
+        }
+      ],
+      "name": "Vaporeon ex Stamp",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "23",
+      "source": "bought",
+      "purchasePrice": 8.24,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681741",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Vaporeon-ex-xPRE023?sellerCountry=7&language=3",
+      "imageData": "images/1780755709285-i8za.jpg"
+    },
+    {
+      "id": "mptxj1mcqvha0",
+      "priceHistory": [
+        {
+          "date": "2025-08-09",
+          "price": 5.74,
+          "note": "Kaufpreis + 0.24€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 9,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Victini",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 208",
+      "source": "bought",
+      "purchasePrice": 5.74,
+      "quantity": 1,
+      "purchaseDate": "2025-08-09",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224594811",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Victini-V1-SVP208?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755710478-s7dp.jpg"
+    },
+    {
+      "id": "mptx9y2rq6ge0",
+      "priceHistory": [
+        {
+          "date": "2025-08-09",
+          "price": 2.93,
+          "note": "Kaufpreis + 0,24€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 2.82,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Liberlo ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Stellar Miracle",
+      "setCode": "SCR",
+      "cardNumber": "157",
+      "source": "bought",
+      "purchasePrice": 2.93,
+      "quantity": 1,
+      "purchaseDate": "2025-08-09",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224594811",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Stellar-Crown/Cinderace-ex-V2-SCR157?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755711579-a03y.jpg"
+    },
+    {
+      "id": "mptx2jy95yafx",
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 8.28,
+          "note": "Kaufpreis + 0.28€ Porto"
+        },
+        {
+          "date": "2026-05-31",
+          "price": 12,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Flamara ex mit STEMP",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SVP Promo",
+      "setCode": "",
+      "cardNumber": "SVP 14",
+      "source": "bought",
+      "purchasePrice": 8.28,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224681745",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Karte aus der Suprice Box mit Stemp",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions-Additionals/Flareon-ex-xPRE007?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755712802-oooq.jpg"
+    },
+    {
+      "id": "mpstn2yssig5s",
+      "priceHistory": [
+        {
+          "date": "2025-07-13",
+          "price": 46,
+          "note": "CardMarket"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 150,
+          "note": "CardMarket günstigstes und einziges Angebot NM"
+        }
+      ],
+      "name": "Lucario LV.X",
+      "type": "card",
+      "language": "DE",
+      "serie": "Sonstiges",
+      "set": "Geheimnisvolle Schätze",
+      "setCode": "",
+      "cardNumber": "122",
+      "source": "gift",
+      "purchasePrice": 46,
+      "quantity": 1,
+      "purchaseDate": "2025-07-01",
+      "condition": "mint",
+      "dealer": "Schwägerin",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Mysterious-Treasures/Lucario-LVX-MT122?sellerCountry=7&language=1,3&minCondition=3",
+      "imageData": "images/1780755714535-x1a4.jpg"
+    },
+    {
+      "id": "mpss867za7ei9",
+      "priceHistory": [
+        {
+          "date": "2024-05-20",
+          "price": 8,
+          "note": "Schätzwert"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 14.5,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Zapdos ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "192",
+      "source": "gift",
+      "purchasePrice": 8,
+      "quantity": 2,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Zapdos-ex-V2-MEW192?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755715645-5k4a.jpg"
+    },
+    {
+      "id": "mpss2t5j64gd4",
+      "priceHistory": [
+        {
+          "date": "2024-05-20",
+          "price": 15,
+          "note": "Schätzpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 23,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Mew ex - Metal Card",
+      "type": "card",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "205",
+      "source": "gift",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Aus der Ultra Premium Collection - Material Metall",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Mew-ex-V4-MEW205?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755716561-8wrw.jpg"
+    },
+    {
+      "id": "mpsrwpl4guhzs",
+      "priceHistory": [
+        {
+          "date": "2024-05-20",
+          "price": 25,
+          "note": "Schätzwert"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 48,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Mewtu ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SV Promo",
+      "setCode": "",
+      "cardNumber": "",
+      "source": "gift",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Mewtwo-SVP052?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755717636-shwa.jpg"
+    },
+    {
+      "id": "mpsrt7eo5adm8",
+      "priceHistory": [
+        {
+          "date": "2024-05-20",
+          "price": 25,
+          "note": "Schätzwert"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 85,
+          "note": "CaedMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Mew ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SV Promo",
+      "setCode": "",
+      "cardNumber": "SVP 53",
+      "source": "gift",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Mew-ex-SVP053?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755718845-bbhb.jpg"
+    },
+    {
+      "id": "mpsrny3uev997",
+      "priceHistory": [
+        {
+          "date": "2026-05-30",
+          "price": 8,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Rossana ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "191",
+      "source": "pulled",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Jynx-ex-V2-MEW191?sellerCountry=7&language=1&minCondition=2",
+      "imageData": "images/1780755720694-8pf1.jpg"
+    },
+    {
+      "id": "mpsr7mybw2poc",
+      "priceHistory": [
+        {
+          "date": "2026-05-30",
+          "price": 22,
+          "note": "CardMarket günstiges Angebot"
+        }
+      ],
+      "name": "Venusaur ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "182",
+      "source": "pulled",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "Roter binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Venusaur-ex-V2-MEW182?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755721716-wn1p.jpg"
+    },
+    {
+      "id": "mpso0fsykmgcm",
+      "priceHistory": [
+        {
+          "date": "2025-08-01",
+          "price": 6.27,
+          "note": "Kaufpreis + 0,67€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 9,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Victini",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SV Promo",
+      "setCode": "",
+      "cardNumber": "SVP 208",
+      "source": "bought",
+      "purchasePrice": 6.27,
+      "quantity": 1,
+      "purchaseDate": "2025-08-01",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1223626003",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Victini-V1-SVP208?sellerCountry=7&language=3",
+      "imageData": "images/1780755722678-t45i.jpg"
+    },
+    {
+      "id": "mpsnjuz0ax5eh",
+      "priceHistory": [
+        {
+          "date": "2024-03-31",
+          "price": 1.94,
+          "note": "Kaufpreis + 0,54€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 4.5,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Dunkles Garados",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Celebrations",
+      "setCode": "CEL",
+      "cardNumber": "TR 8",
+      "source": "bought",
+      "purchasePrice": 1.94,
+      "quantity": 1,
+      "purchaseDate": "2024-03-31",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1151149351",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Celebrations/Dark-Gyarados?sellerCountry=7&language=3",
+      "imageData": "images/1780755723636-tz8y.jpg"
+    },
+    {
+      "id": "mpsne13dka9fw",
+      "priceHistory": [
+        {
+          "date": "2024-03-27",
+          "price": 4.54,
+          "note": "Kaufpreis + 0,54€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 16,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Siegfrieds Glurak V",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "SWSH Promo",
+      "setCode": "",
+      "cardNumber": "SWSH 133",
+      "source": "bought",
+      "purchasePrice": 4.54,
+      "quantity": 1,
+      "purchaseDate": "2024-03-27",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1151149351",
+      "targetPrice": 0,
+      "storageLocation": "Roter BInder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SWSH-Black-Star-Promos/Lances-Charizard-V-V1-SWSH133?sellerCountry=7&language=3",
+      "imageData": "images/1780755724789-gzc7.jpg"
+    },
+    {
+      "id": "mpsn5jafbkpap",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 2.34,
+          "note": "Kaufpreis + 0,84€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 1.5,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Gladimperio",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "SV Promo",
+      "setCode": "",
+      "cardNumber": "SVP 130",
+      "source": "bought",
+      "purchasePrice": 2.34,
+      "quantity": 1,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221927175",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Kingambit-SFA130?sellerCountry=7&language=3",
+      "imageData": "images/1780755725836-39j4.jpg"
+    },
+    {
+      "id": "mpsn0jel5wb7e",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 4.34,
+          "note": "Kaufpreis + 0,84€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 2,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Miraidon ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Karmesin & Purpur",
+      "setCode": "SVI",
+      "cardNumber": "227",
+      "source": "bought",
+      "purchasePrice": 4.34,
+      "quantity": 1,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221927175",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Scarlet-Violet/Miraidon-ex-V3-SVI227?sellerCountry=7&language=3",
+      "imageData": "images/1780755727001-29tb.jpg"
+    },
+    {
+      "id": "mpsmw297ucg5a",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 8.84,
+          "note": "Kaufpreis + 0,84€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 5,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Flareon ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "14",
+      "source": "bought",
+      "purchasePrice": 8.84,
+      "quantity": 2,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221927175",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions/Flareon-ex-V1-PRE014?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsms2t90xe0e",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 3.34,
+          "note": "Kaufpreis + 0,84€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 4,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Vaporeon ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "23",
+      "source": "bought",
+      "purchasePrice": 3.34,
+      "quantity": 1,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221927175",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Prismatic-Evolutions/Vaporeon-ex-V1-PRE023?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsmfui4cs58k",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 24.6,
+          "note": "Kaufpreis + 1,60€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 50,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Glurak V",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "SWSH Promo",
+      "setCode": "",
+      "cardNumber": "SWSH 260",
+      "source": "bought",
+      "purchasePrice": 24.6,
+      "quantity": 1,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221918262",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SWSH-Black-Star-Promos/Charizard-V-SWSH260?sellerCountry=7&language=3",
+      "imageData": "images/1780755728205-4rf4.jpg"
+    },
+    {
+      "id": "mpsmazha3iswb",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 30.6,
+          "note": "Kaufpreis + 1,60€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 70,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Glurak V Star",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "SWSH Promo",
+      "setCode": "",
+      "cardNumber": "SWSH262",
+      "source": "bought",
+      "purchasePrice": 30.6,
+      "quantity": 1,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221918262",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SWSH-Black-Star-Promos/Charizard-VSTAR-SWSH262?sellerCountry=7&language=1",
+      "imageData": "images/1780755729442-gnjc.jpg"
+    },
+    {
+      "id": "mpsm45vcy1j81",
+      "priceHistory": [
+        {
+          "date": "2025-07-22",
+          "price": 28.6,
+          "note": "Kaufpreis + 1,60€ Porto"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 62,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Wartortle",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "171",
+      "source": "bought",
+      "purchasePrice": 28.6,
+      "quantity": 1,
+      "purchaseDate": "2025-07-22",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221918262",
+      "targetPrice": 0,
+      "storageLocation": "Roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Wartortle-V2-MEW171?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755730745-w9or.jpg"
+    },
+    {
+      "id": "mpshr2bs4jpzj",
+      "priceHistory": [
+        {
+          "date": "2025-07-12",
+          "price": 40,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 45,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Stürmische Funken Boosterbundle DE",
+      "type": "bb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Stürmische Funken",
+      "setCode": "SSP",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 40,
+      "quantity": 1,
+      "purchaseDate": "2025-07-12",
+      "condition": "mint",
+      "dealer": "privat Tankstelle",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Surging-Sparks-Booster-Bundle?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsho1gje1ttq",
+      "priceHistory": [
+        {
+          "date": "2025-07-12",
+          "price": 35,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 40,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Maskerade im Zwielicht Boosterbundle DE",
+      "type": "bb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Maskerade im Zwielicht",
+      "setCode": "TWM",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 35,
+      "quantity": 1,
+      "purchaseDate": "2025-07-12",
+      "condition": "mint",
+      "dealer": "privat Tankstelle",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Twilight-Masquerade-Booster-Bundle?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpshl7ceuco0g",
+      "priceHistory": [
+        {
+          "date": "2025-07-12",
+          "price": 50,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 60,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Prismatische Entwicklung Boosterbundle DE",
+      "type": "bb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 50,
+      "quantity": 1,
+      "purchaseDate": "2025-07-12",
+      "condition": "mint",
+      "dealer": "privat Tankstelle",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Prismatic-Evolutions-Booster-Bundle?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsh5zakpysz1",
+      "priceHistory": [
+        {
+          "date": "2023-08-11",
+          "price": 54.99,
+          "note": "Release-Preis UVP"
+        },
+        {
+          "date": "2025-07-12",
+          "price": 120,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 200,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Obsidianflammen TTB DE",
+      "type": "etb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Obsidianflammen",
+      "setCode": "OBF",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 120,
+      "quantity": 1,
+      "purchaseDate": "2025-07-12",
+      "condition": "mint",
+      "dealer": "privat an Tankstelle",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Elite-Trainer-Boxes/Obsidian-Flames-Elite-Trainer-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsgttupzzrhq",
+      "priceHistory": [
+        {
+          "date": "2025-05-30",
+          "price": 54.99,
+          "note": "Release-Preis UVP"
+        },
+        {
+          "date": "2025-09-20",
+          "price": 80,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 130,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Ewige Rivalen TTB DE",
+      "type": "etb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Ewige Rivalen",
+      "setCode": "DRI",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 80,
+      "quantity": 2,
+      "purchaseDate": "2025-09-20",
+      "condition": "mint",
+      "dealer": "privat kleinanzeigen Paul Lüth",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Elite-Trainer-Boxes/Destined-Rivals-Elite-Trainer-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsgap6n7ri6n",
+      "priceHistory": [
+        {
+          "date": "2025-07-18",
+          "price": 29.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-23",
+          "price": 29.94,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 55,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Weiße Flammen Boosterbundle DE",
+      "type": "bb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "White Flare",
+      "setCode": "WHT",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 29.94,
+      "quantity": 1,
+      "purchaseDate": "2025-08-23",
+      "condition": "mint",
+      "dealer": "Amazon",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/White-Flare-Booster-Bundle?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsg6i62w9x8m",
+      "priceHistory": [
+        {
+          "date": "2025-07-18",
+          "price": 29.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-23",
+          "price": 29.94,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 59,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Schwarze Blitze Boosterbundle DE",
+      "type": "bb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Schwarze Blitze",
+      "setCode": "BLK",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 29.94,
+      "quantity": 1,
+      "purchaseDate": "2025-08-23",
+      "condition": "mint",
+      "dealer": "Amazon",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Black-Bolt-Booster-Bundle?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsg1vuf5mzlp",
+      "priceHistory": [
+        {
+          "date": "2025-07-18",
+          "price": 54.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-30",
+          "price": 52.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 85,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Weiße Flammen TTB DE",
+      "type": "etb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "White Flare",
+      "setCode": "WHT",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 52.99,
+      "quantity": 1,
+      "purchaseDate": "2025-08-30",
+      "condition": "mint",
+      "dealer": "Amazon",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Elite-Trainer-Boxes/White-Flare-Elite-Trainer-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsfpth0c2omx",
+      "priceHistory": [
+        {
+          "date": "2023-09-22",
+          "price": 54.99,
+          "note": "Release-Preis UVP"
+        },
+        {
+          "date": "2025-07-10",
+          "price": 200,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 370,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "151 Top-Trainer-Box DE",
+      "type": "etb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 200,
+      "quantity": 1,
+      "purchaseDate": "2025-07-10",
+      "condition": "mint",
+      "dealer": "privat DD",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Elite-Trainer-Boxes/151-Elite-Trainer-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpscr5dt9nt1e",
+      "priceHistory": [
+        {
+          "date": "2023-09-22",
+          "price": 24.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-17",
+          "price": 73.89,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 170,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "151 Bosster Bundle EN",
+      "type": "bb",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 73.89,
+      "quantity": 1,
+      "purchaseDate": "2025-08-17",
+      "condition": "mint",
+      "dealer": "Alza",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/151-Booster-Bundle?sellerCountry=7&language=1",
+      "imageData": ""
+    },
+    {
+      "id": "mpsciq5cqj4te",
+      "priceHistory": [
+        {
+          "date": "2024-08-02",
+          "price": 24.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-25",
+          "price": 48.9,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 100,
+          "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-06",
+          "price": 118,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
+      "name": "Shrouded Fable Quajutsu ex Collection Box (EN)",
+      "type": "col_si",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "Nebel der Sagen",
+      "setCode": "SFA",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 48.9,
+      "quantity": 1,
+      "purchaseDate": "2025-08-25",
+      "condition": "mint",
+      "dealer": "Spiele-Spezi",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/Shrouded-Fable-Greninja-ex-Special-Illustration-Collection?sellerCountry=7&language=1",
+      "imageData": ""
+    },
+    {
+      "id": "mpsccqgdiwwh9",
+      "priceHistory": [
+        {
+          "date": "2024-08-02",
+          "price": 24.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-25",
+          "price": 39.9,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 55,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Nebel der Sagen Seedraking ex Kollektion Box",
+      "type": "col_si",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Nebel der Sagen",
+      "setCode": "SFA",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 39.9,
+      "quantity": 1,
+      "purchaseDate": "2025-08-25",
+      "condition": "mint",
+      "dealer": "Speile-Spezi",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/Shrouded-Fable-Kingdra-ex-Special-Illustration-Collection?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsc2dkaig8mg",
+      "priceHistory": [
+        {
+          "date": "2023-03-31",
+          "price": 179.99,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-25",
+          "price": 159.9,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 170,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Karmesin & Purpur 36 Booster Display (DE)",
+      "type": "display_36",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Karmesin & Purpur",
+      "setCode": "SVI",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 159.9,
+      "quantity": 2,
+      "purchaseDate": "2025-08-25",
+      "condition": "mint",
+      "dealer": "Spiele-Spezi",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Scarlet-Violet-Booster-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpsbtyjp3zqwh",
+      "priceHistory": [
+        {
+          "date": "2023-03-31",
+          "price": 59.95,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-25",
+          "price": 44.9,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-30",
+          "price": 75,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Miraidon Top-Trainer Box TTB (DE)",
+      "type": "etb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Karmesin & Purpur",
+      "setCode": "SVI",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 44.9,
+      "quantity": 1,
+      "purchaseDate": "2025-08-25",
+      "condition": "mint",
+      "dealer": "Spiele-Spezi",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Elite-Trainer-Boxes/Scarlet-Violet-Miraidon-Elite-Trainer-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpreso904pozo",
+      "priceHistory": [
+        {
+          "date": "2025-08-26",
+          "price": 219.9,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 310,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "151 Blooming Waters Premium Collection (EN)",
+      "type": "col_prem",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 219.9,
+      "quantity": 1,
+      "purchaseDate": "2025-08-26",
+      "condition": "mint",
+      "dealer": "Spiele-Spezi",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/151-Blooming-Waters-Premium-Collection?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mprellnb42pbr",
+      "priceHistory": [
+        {
+          "date": "2025-07-30",
+          "price": 44.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 53,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Nebel der Sagen TTB - DE",
+      "type": "etb",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Nebel der Sagen",
+      "setCode": "SFA",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 44.99,
+      "quantity": 2,
+      "purchaseDate": "2025-07-30",
+      "condition": "mint",
+      "dealer": "GamesIsland",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Elite-Trainer-Boxes/Shrouded-Fable-Elite-Trainer-Box?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpregx4vswxgm",
+      "priceHistory": [
+        {
+          "date": "2025-07-30",
+          "price": 39.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 63,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Paldea Adventure Chest DE",
+      "type": "surprise",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Entwicklungen in Paldea",
+      "setCode": "PAL",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 39.99,
+      "quantity": 2,
+      "purchaseDate": "2025-07-30",
+      "condition": "mint",
+      "dealer": "GameIsland",
+      "targetPrice": 0,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/Paldea-Adventures-Chest?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mpre6ycvjlmbp",
+      "priceHistory": [
+        {
+          "date": "2025-07-30",
+          "price": 29.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 35,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Ogerpon EX Premium-Kollektion - DE",
+      "type": "col_prem",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "ohne Zugehörigkeit",
+      "setCode": "",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 29.99,
+      "quantity": 2,
+      "purchaseDate": "2025-07-30",
+      "condition": "mint",
+      "dealer": "GamesIsland",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/Ogerpon-ex-Premium-Collection?sellerCountry=7&language=3",
+      "imageData": ""
+    },
+    {
+      "id": "mprcosy7kk5x9",
+      "priceHistory": [
+        {
+          "date": "2025-04-15",
+          "price": 160,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-07-29",
+          "price": 139.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 160,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Reisegefährten Booster Display DE",
+      "type": "display_36",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Reisegefährten",
+      "setCode": "JTG",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 139.99,
+      "quantity": 1,
+      "purchaseDate": "2025-07-29",
+      "condition": "mint",
+      "dealer": "https://kofuku.de/collections/pokemon-karten?sort_by=manual&filter.p.tag=gid%3A%2F%2Fshopify%2FFilterSettingGroup%2F186843468&filter.v.availability=1",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "",
+      "imageData": ""
+    },
+    {
+      "id": "mprbubhkpm1bh",
+      "priceHistory": [
+        {
+          "date": "2025-04-15",
+          "price": 160,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-07-29",
+          "price": 169.99,
+          "note": ""
+        },
+        {
+          "date": "2026-05-29",
+          "price": 190,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Journey Together Booster Display EN",
+      "type": "display_36",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "Reisegefährten",
+      "setCode": "JTG",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 169.99,
+      "quantity": 1,
+      "purchaseDate": "2025-07-29",
+      "condition": "mint",
+      "dealer": "https://kofuku.de/collections/pokemon-karten?sort_by=manual&filter.p.tag=gid%3A%2F%2Fshopify%2FFilterSettingGroup%2F186843468&filter.v.availability=1",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Journey-Together-Booster-Box?sellerCountry=7&language=1",
+      "imageData": ""
+    },
+    {
+      "id": "mpratnksmrubj",
+      "priceHistory": [
+        {
+          "date": "2025-05-15",
+          "price": 180,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-07-29",
+          "price": 209.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 350,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Prismatic Evolution Super Premium Collection EN",
+      "type": "col_super",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 209.99,
+      "quantity": 1,
+      "purchaseDate": "2025-07-29",
+      "condition": "mint",
+      "dealer": "https://kofuku.de/collections/pokemon-karten?sort_by=manual&filter.p.tag=gid%3A%2F%2Fshopify%2FFilterSettingGroup%2F186843468&filter.v.availability=1",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/Prismatic-Evolutions-Super-Premium-Collection?sellerCountry=7&language=1&minCondition=2",
+      "imageData": ""
+    },
+    {
+      "id": "mprao7sot0y6d",
+      "priceHistory": [
+        {
+          "date": "2025-01-15",
+          "price": 50,
+          "note": "Release-Preise"
+        },
+        {
+          "date": "2025-07-29",
+          "price": 54.99,
+          "note": "Kaufpreis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 85,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Pokémon Scarlet & Violet Prismatic Evolution Binder Collection (englisch)",
+      "type": "col_binder",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 54.99,
+      "quantity": 1,
+      "purchaseDate": "2025-07-29",
+      "condition": "mint",
+      "dealer": "https://kofuku.de/collections/pokemon-karten?sort_by=manual&filter.p.tag=gid%3A%2F%2Fshopify%2FFilterSettingGroup%2F186843468&filter.v.availability=1",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "Verpackung leicht eingerissen an der Vorderseite",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Box-Sets/Prismatic-Evolutions-Binder-Collection?sellerCountry=7&language=1",
+      "imageData": ""
+    },
+    {
+      "id": "mpra4l5tu3fqv",
+      "priceHistory": [
+        {
+          "date": "2025-05-15",
+          "price": 600,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2025-08-29",
+          "price": 750,
+          "note": ""
+        },
+        {
+          "date": "2026-05-29",
+          "price": 1300,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Pokemon Prismatic Evolutions Boosterbundle Display EN",
+      "type": "bb_display",
+      "language": "EN",
+      "serie": "Karmesin & Purpur",
+      "set": "Prismatische Entwicklungen",
+      "setCode": "PRE",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 750,
+      "quantity": 1,
+      "purchaseDate": "2025-08-29",
+      "condition": "mint",
+      "dealer": "https://stormcardstcg.com/",
+      "targetPrice": 2000,
+      "storageLocation": "Schrank",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Prismatic-Evolutions-Booster-Bundle-Display?sellerCountry=7&language=1",
+      "imageData": ""
+    },
+    {
+      "id": "mpr9slzptaqod",
+      "priceHistory": [
+        {
+          "date": "2025-05-15",
+          "price": 180,
+          "note": "Release UVP"
+        },
+        {
+          "date": "2025-05-16",
+          "price": 200,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 250,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Ewige Rivalen Display",
+      "type": "display_36",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Ewige Rivalen",
+      "setCode": "DRI",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 200,
+      "quantity": 2,
+      "purchaseDate": "2025-07-02",
+      "condition": "mint",
+      "dealer": "privat",
+      "targetPrice": 400,
+      "storageLocation": "Schrank + Regal",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Booster-Boxes/Destined-Rivals-Booster-Box?sellerCountry=7&language=3&minCondition=2",
+      "imageData": ""
+    },
+    {
+      "id": "mpr9lk5ky0ypr",
+      "priceHistory": [
+        {
+          "date": "2023-09-15",
+          "price": 35,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2024-10-15",
+          "price": 56,
+          "note": "erste Preissteigerung"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 130,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Blastoise ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "200",
+      "source": "pulled",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 350,
+      "storageLocation": "roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Blastoise-ex-V3-MEW200?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780755731918-rd4s.jpg"
+    },
+    {
+      "id": "mpr9g6jsspmyy",
+      "priceHistory": [
+        {
+          "date": "2023-09-15",
+          "price": 85,
+          "note": "Release-Preis"
+        },
+        {
+          "date": "2024-10-15",
+          "price": 160,
+          "note": "erster Preissprung"
+        },
+        {
+          "date": "2026-05-29",
+          "price": 340,
+          "note": "CardMarket günstigster Preis"
+        }
+      ],
+      "name": "Charizard ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "151",
+      "setCode": "MEW",
+      "cardNumber": "199",
+      "source": "pulled",
+      "purchasePrice": 8,
+      "quantity": 1,
+      "purchaseDate": "2024-05-20",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 500,
+      "storageLocation": "roter Binder",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/151/Charizard-ex-V3-MEW199?sellerCountry=7&language=3",
+      "imageData": "images/1780755732875-jv7x.jpg"
+    }
+  ]
+}
