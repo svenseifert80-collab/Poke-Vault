@@ -34,39 +34,6 @@
       "imageData": "images/1780778185449-ug9i.jpg"
     },
     {
-      "id": "mq2sz9nl0a7t3",
-      "priceHistory": [
-        {
-          "date": "2023-07-15",
-          "price": 5.5,
-          "note": "Release-Preis"
-        },
-        {
-          "date": "2026-06-06",
-          "price": 8.5,
-          "note": "CardMarket günstigstes Angebot"
-        }
-      ],
-      "name": "Floragato",
-      "type": "card",
-      "language": "DE",
-      "serie": "Karmesin & Purpur",
-      "set": "Entwicklungen in Paldea",
-      "setCode": "PAL",
-      "cardNumber": "197",
-      "source": "pulled",
-      "purchasePrice": 5,
-      "quantity": 1,
-      "purchaseDate": "2023-10-10",
-      "condition": "mint",
-      "dealer": "https://www.pricecharting.com/game/pokemon-paldea-evolved/floragato-197",
-      "targetPrice": 0,
-      "storageLocation": "",
-      "notes": "",
-      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Paldea-Evolved/Floragato-V2-PAL197?sellerCountry=7&language=3&minCondition=2",
-      "imageData": "images/1780777743841-pllq.jpg"
-    },
-    {
       "id": "mq2stojvhqwj7",
       "priceHistory": [
         {
