@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq2s8dcokk3n4",
+      "priceHistory": [],
+      "name": "Pidgeot ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Obsidianflammen",
+      "setCode": "OBF",
+      "cardNumber": "225",
+      "source": "pulled",
+      "purchasePrice": 5,
+      "quantity": 1,
+      "purchaseDate": "2025-02-12",
+      "condition": "mint",
+      "dealer": "",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "",
+      "imageData": "images/1780776287541-4wc7.jpg"
+    },
+    {
       "id": "mq2e633qqgnt3",
       "priceHistory": [
         {
