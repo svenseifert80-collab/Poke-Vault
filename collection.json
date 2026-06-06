@@ -4,6 +4,11 @@
       "id": "mq2snlpdpbu2j",
       "priceHistory": [
         {
+          "date": "2023-03-15",
+          "price": 2.8,
+          "note": "Release-Preis"
+        },
+        {
           "date": "2026-06-06",
           "price": 15,
           "note": "CardMarket günstigstes Angebot"
