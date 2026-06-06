@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq2stojvhqwj7",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2026-06-06",
+          "price": 5.5,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Quaxwell",
       "type": "card",
       "language": "DE",
