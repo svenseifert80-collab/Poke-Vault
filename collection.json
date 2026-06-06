@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq2snlpdpbu2j",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2026-06-06",
+          "price": 15,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Lucario VStar",
       "type": "card",
       "language": "DE",
