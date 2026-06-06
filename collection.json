@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq2sf5gtm0efh",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2026-06-06",
+          "price": 10,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Pidgey",
       "type": "card",
       "language": "DE",
