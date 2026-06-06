@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq2sz9nl0a7t3",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2023-07-15",
+          "price": 5.5,
+          "note": "Release-Preis"
+        }
+      ],
       "name": "Floragato",
       "type": "card",
       "language": "DE",
