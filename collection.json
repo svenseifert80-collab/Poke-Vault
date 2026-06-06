@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq2tcslmh4jlf",
+      "priceHistory": [],
+      "name": "Mediti",
+      "type": "card",
+      "language": "JP",
+      "serie": "Karmesin & Purpur",
+      "set": "Stellar Miracle",
+      "setCode": "SCR",
+      "cardNumber": "111",
+      "source": "bought",
+      "purchasePrice": 2,
+      "quantity": 1,
+      "purchaseDate": "2025-04-16",
+      "condition": "mint",
+      "dealer": "Roter Binder",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Stellar-Miracle/Meditite-V2-sv7111?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780778185449-ug9i.jpg"
+    },
+    {
       "id": "mq2sz9nl0a7t3",
       "priceHistory": [
         {
