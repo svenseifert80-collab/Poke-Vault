@@ -558,6 +558,7 @@
       </a><br>
       Ben&ouml;tigte Berechtigung: <code>public_repo</code> (oder <code>repo</code> f&uuml;r private Repos)
     </div>
+    <div class="settings-info" id="storage-status">📊 <strong>Speicher-Status</strong> wird gepr&uuml;ft…</div>
     <div class="form-grid">
       <div class="form-group full">
         <label>Repository (Format: <code style="font-size:10px">benutzername/repo-name</code>)</label>
@@ -750,8 +751,17 @@ const GH = {
   async getFile(path){
     const r=await fetch(`https://api.github.com/repos/${this._owner()}/${this._repo()}/contents/${path}`,{headers:this._headers()});
     if(r.status===404) return null;
-    if(!r.ok) throw new Error(`GitHub ${r.status}: ${(await r.json().catch(()=>({}))).message||''}`);
+    if(!r.ok) throw await this._err(r);
     return r.json();
+  },
+
+  // Baut einen Error mit angehängtem HTTP-Status (z.B. err.status===403),
+  // damit Aufrufer gezielt auf Berechtigungsprobleme reagieren können.
+  async _err(r){
+    const msg=(await r.json().catch(()=>({}))).message||'';
+    const e=new Error(`GitHub ${r.status}${msg?': '+msg:''}`);
+    e.status=r.status;
+    return e;
   },
 
   async putFile(path, b64content, message){
@@ -765,7 +775,7 @@ const GH = {
       const cur=await this.getFile(path);
       if(cur){ body.sha=cur.sha; r=await fetch(url,{method:'PUT',headers:this._headers(),body:JSON.stringify(body)}); }
     }
-    if(!r.ok) throw new Error(`GitHub ${r.status}: ${(await r.json().catch(()=>({}))).message||''}`);
+    if(!r.ok) throw await this._err(r);
     const json=await r.json();
     shas[path]=json.content.sha;
     localStorage.setItem(this.SHA_KEY,JSON.stringify(shas));
@@ -812,10 +822,42 @@ const GH = {
     return `https://${this._owner()}.github.io/${this._repo()}/${path}`;
   },
 
-  async testConnection(){
-    const r=await fetch(`https://api.github.com/repos/${this._owner()}/${this._repo()}`,{headers:this._headers()});
-    if(!r.ok) throw new Error(`HTTP ${r.status}: ${(await r.json().catch(()=>({}))).message||'Unbekannter Fehler'}`);
+  async deleteFile(path, sha, message){
+    const url=`https://api.github.com/repos/${this._owner()}/${this._repo()}/contents/${path}`;
+    const r=await fetch(url,{method:'DELETE',headers:this._headers(),body:JSON.stringify({message,sha})});
+    if(!r.ok) throw await this._err(r);
     return r.json();
+  },
+
+  // Reine Lese-Abfrage der Repo-Infos (u.a. .size in KB) — ohne Schreibtest,
+  // damit z.B. die Speicher-Statusanzeige nicht bei jedem Öffnen Testdateien anlegt.
+  async getRepoInfo(){
+    const r=await fetch(`https://api.github.com/repos/${this._owner()}/${this._repo()}`,{headers:this._headers()});
+    if(!r.ok) throw await this._err(r);
+    return r.json();
+  },
+
+  async testConnection(){
+    const repoInfo=await this.getRepoInfo();
+
+    // Lesezugriff allein reicht NICHT – PokéVault muss Sammlung & Bilder
+    // SCHREIBEN können. Ohne diesen aktiven Schreibtest würde ein Token mit
+    // nur Lese-Rechten den Verbindungstest unbemerkt "bestehen" (genau das
+    // ist zuvor passiert: Verbindung lief, aber jeder Speicher-/Bild-Upload
+    // schlug erst im Hintergrund mit 403 "Resource not accessible…" fehl).
+    const testPath='.pokevault-write-test.txt';
+    try{
+      const put=await this.putFile(testPath, this._toB64(`PokéVault Verbindungstest – ${new Date().toISOString()}\nDiese Datei kann gefahrlos gelöscht werden.`), 'PokéVault: Verbindungstest (Schreibrechte)');
+      // Aufräumen, Fehler hier sind unkritisch (Schreibtest war zu dem Zeitpunkt schon erfolgreich)
+      this.deleteFile(testPath, put.content.sha, 'PokéVault: Verbindungstest aufgeräumt').catch(()=>{});
+    }catch(e){
+      const err=new Error(e.status===403
+        ? 'Verbindung zum Repository hergestellt, aber dein Token hat keine SCHREIBrechte ("403 Resource not accessible"). Bitte ein neues Token mit Berechtigung "Contents: Read and write" (Fine-grained Token) bzw. Scope "repo"/"public_repo" (Classic Token) erstellen und hier neu verbinden.'
+        : `Verbindung zum Repository hergestellt, aber Schreibtest fehlgeschlagen: ${e.message}`);
+      err.status=e.status; err.writeFailed=true;
+      throw err;
+    }
+    return repoInfo;
   }
 };
 
@@ -845,6 +887,49 @@ function openSettings(){
   document.getElementById('gh-token').value=c.token||'';
   document.getElementById('gh-test-result').textContent='';
   document.getElementById('modal-settings').classList.remove('hidden');
+  checkStorageStatus();
+}
+
+// Zeigt im Einstellungen-Dialog an, wie voll der lokale Browser-Speicher
+// und (falls verbunden) das GitHub-Repository sind — hilft bei der Diagnose
+// von "Speicher voll"-Problemen (die i.d.R. NUR den Browser betreffen, s.u.)
+async function checkStorageStatus(){
+  const el=document.getElementById('storage-status'); if(!el) return;
+  el.innerHTML='📊 <strong>Speicher-Status</strong> wird gepr&uuml;ft…';
+
+  // 1) Lokaler Browser-Speicher (localStorage) — DAS ist der Speicher, der bei
+  //    "QuotaExceededError" voll ist. Limit liegt browserabhängig bei ca. 5–10 MB.
+  let localBytes=0;
+  try{ for(const k in localStorage){ if(Object.prototype.hasOwnProperty.call(localStorage,k)) localBytes+=(localStorage[k]?.length||0)+k.length; } }catch{}
+  const collBytes=(localStorage.getItem(DB.K)||'').length;
+  const localPct=Math.min(100,Math.round(localBytes/(5*1024*1024)*100));
+  const localColor=localPct>85?'var(--red)':(localPct>60?'var(--gold)':'var(--green)');
+
+  let lines=[
+    `<div style="margin-bottom:6px">📦 <strong style="color:var(--text-d)">Browser-Speicher</strong> (localStorage, hier tritt "Speicher voll" auf): `+
+    `<strong style="color:${localColor}">${fmtKB(localBytes/1024)}</strong> von ~5&ndash;10&nbsp;MB `+
+    `<span style="color:var(--text-m)">(davon Sammlungsdaten: ${fmtKB(collBytes/1024)})</span></div>`
+  ];
+
+  // 2) GitHub-Repository — eigener, viel größerer Speicher (mehrere GB frei),
+  //    völlig unabhängig vom Browser-Speicher.
+  if(GH.isConfigured()){
+    try{
+      const info=await GH.getRepoInfo();
+      const sizeKB=info.size||0;
+      lines.push(`<div>☁️ <strong style="color:var(--text-d)">GitHub-Repository</strong> <code>${info.full_name}</code>: `+
+        `<strong style="color:var(--green)">${fmtKB(sizeKB)}</strong> belegt `+
+        `<span style="color:var(--text-m)">— Kontingent liegt bei mehreren GB, hiervon also weit entfernt ✓</span></div>`);
+    }catch(e){
+      lines.push(`<div>☁️ <strong style="color:var(--text-d)">GitHub-Repository</strong>: Größe konnte nicht abgerufen werden <span style="color:var(--text-m)">(${e.message})</span></div>`);
+    }
+  } else {
+    lines.push(`<div>☁️ <strong style="color:var(--text-d)">GitHub-Repository</strong>: nicht verbunden</div>`);
+  }
+
+  lines.push(`<div style="margin-top:8px;color:var(--text-m);font-size:11px">💡 Der Fehler <code>"Speicher voll"</code> betrifft <u>ausschließlich</u> den Browser-Speicher (Zeile 1) — niemals GitHub. GitHub-Repos haben mehrere Gigabyte Platz, eine Pokémon-Sammlung mit Bildern füllt davon nur einen Bruchteil.</div>`);
+
+  el.innerHTML=lines.join('');
 }
 async function saveGHConfig(){
   const repo=document.getElementById('gh-repo').value.trim();
@@ -862,6 +947,10 @@ async function saveGHConfig(){
     const data=await GH.loadCollection();
     if(data?.items){ DB.saveLocal(data); renderDash(); }
     ghStatus('ok');
+    // Verbindung inkl. Schreibtest erfolgreich → evtl. vorherige Migrations-Sperre aufheben
+    // und ggf. liegengebliebene lokale Bilder jetzt im Hintergrund auslagern
+    unblockMigration();
+    setTimeout(()=>{ migrateImagesToGH().then(r=>{ if(r.migrated>0) toast(`✓ ${r.migrated} Bild${r.migrated===1?'':'er'} auf GitHub ausgelagert.`,'ok',6000); }).catch(()=>{}); },1500);
   }catch(e){
     res.innerHTML=`<span style="color:var(--red)">✗ Fehler: ${e.message}</span>`;
     GH.clearConfig(); ghStatus('off');
@@ -892,23 +981,40 @@ const DB = {
 };
 
 // ── SPEICHER-RETTUNG (lokaler Speicher voll) ──
+
+// Sperre, damit eine erkannte Berechtigungs-Sperre (Token ohne Schreibrechte)
+// nicht bei jedem Laden der Seite erneut für JEDES Bild einen 403-Fehler wirft
+// und die Konsole zuspammt — stattdessen wird die Migration für eine Weile pausiert.
+const GH_MIGRATE_BLOCK_KEY='pokevault_gh_migrate_blocked_until';
+function isMigrationBlocked(){ const u=parseInt(localStorage.getItem(GH_MIGRATE_BLOCK_KEY)||'0',10); return u&&Date.now()<u; }
+function blockMigration(hours=24){ localStorage.setItem(GH_MIGRATE_BLOCK_KEY,String(Date.now()+hours*3600*1000)); }
+function unblockMigration(){ localStorage.removeItem(GH_MIGRATE_BLOCK_KEY); }
+
 // Lagert lokal als Base64 gespeicherte Bilder (data:…) auf GitHub aus und ersetzt
 // sie durch kurze Pfad-Strings — das schafft i.d.R. sehr viel Platz im localStorage frei.
 async function migrateImagesToGH(){
-  if(!GH.isConfigured()) return {migrated:0,failed:0,total:0};
+  if(!GH.isConfigured()) return {migrated:0,failed:0,total:0,permissionError:false};
   const db=DB.get();
   const targets=db.items.filter(it=>it.imageData&&it.imageData.startsWith('data:'));
-  let migrated=0,failed=0;
+  let migrated=0,failed=0,permissionError=false;
   for(const it of targets){
     try{ it.imageData=await GH.uploadImage(it.imageData); migrated++; }
-    catch(e){ failed++; console.warn('Bild-Migration fehlgeschlagen für',it.name,e); }
+    catch(e){
+      failed++;
+      console.warn('Bild-Migration fehlgeschlagen für',it.name,e);
+      // 403 = Token hat keine Schreibrechte → für ALLE Bilder gleich, also
+      // sofort abbrechen statt jedes einzelne Item erfolglos durchzuprobieren
+      if(e?.status===403){ permissionError=true; break; }
+    }
   }
+  if(permissionError) blockMigration(24);
+  else if(migrated>0) unblockMigration();
   if(migrated>0){
     try{ DB._write(db); }catch(e){ console.warn('Konnte ausgelagerte Bilder nicht lokal sichern:',e); }
     if(GH.isConfigured()) GH.scheduleSave(db);
     if(curView==='collection'||curView==='dashboard') nav(curView);
   }
-  return {migrated,failed,total:targets.length};
+  return {migrated,failed,total:targets.length,permissionError};
 }
 
 let _quotaRecoveryRunning=false;
@@ -920,7 +1026,9 @@ async function onStorageFull(){
     if(GH.isConfigured()){
       toast('⚠ Lokaler Speicher voll — lagere Bilder auf GitHub aus, einen Moment…','warn',6000);
       const r=await migrateImagesToGH();
-      if(r.migrated>0){
+      if(r.permissionError){
+        toast('⚠ Auslagern nicht möglich: Dein GitHub-Token hat keine Schreibrechte ("403 Resource not accessible"). Das betrifft vermutlich auch die Synchronisation deiner Sammlung! Bitte in den Einstellungen (⚙) ein neues Token mit Schreibrechten hinterlegen — siehe Hinweis dort.','error',14000);
+      } else if(r.migrated>0){
         toast(`✓ ${r.migrated} Bild${r.migrated===1?'':'er'} auf GitHub ausgelagert — Speicher ist wieder frei. Bitte die letzte Änderung erneut speichern.`,'ok',8000);
       } else if(r.total===0){
         toast('⚠ Lokaler Speicher ist voll, aber es gibt keine lokal gespeicherten Bilder zum Auslagern. Bitte lade die Seite neu — möglicherweise hilft das, oder entferne ein paar große Einträge.','error',9000);
@@ -947,6 +1055,7 @@ const sgn   = n  => n>=0?'+':'';
 const eur   = n  => new Intl.NumberFormat('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)+' €';
 const pct   = n  => sgn(n)+new Intl.NumberFormat('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1}).format(n)+'%';
 const fdate = s  => { if(!s) return '—'; const [y,m,d]=s.split('-'); return `${d}.${m}.${y}`; };
+const fmtKB  = kb => kb>1024 ? (kb/1024).toFixed(2)+' MB' : Math.round(kb)+' KB';
 const today = () => new Date().toISOString().split('T')[0];
 const uid   = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 
@@ -1549,10 +1658,16 @@ async function init(){
   // Das spart massiv Platz im localStorage (Bilder oft >100KB als Base64 vs. wenige Bytes als Pfad)
   // und beugt "Speicher voll"-Fehlern vor — z.B. bei Bildern, die vor dem Verbinden mit GitHub
   // hochgeladen wurden oder bei denen der Upload damals fehlgeschlagen ist.
-  if(GH.isConfigured()){
+  if(GH.isConfigured()&&!isMigrationBlocked()){
     setTimeout(()=>{
       migrateImagesToGH().then(r=>{
-        if(r.migrated>0) console.info(`📦 ${r.migrated} Bild(er) automatisch auf GitHub ausgelagert (Speicher-Optimierung).`);
+        if(r.permissionError){
+          // Nicht bei jedem Reload erneut für jedes Bild 403 werfen — Hinweis EINMAL zeigen, dann 24h pausieren
+          console.warn(`⚠ Bild-Migration pausiert (24h): Token hat keine Schreibrechte (403). ${r.failed} Bild(er) betroffen.`);
+          toast('⚠ Dein GitHub-Token hat keine Schreibrechte — Bilder können nicht ausgelagert/hochgeladen werden (vermutlich auch die Sammlungs-Synchronisation nicht!). Bitte in den Einstellungen (⚙) ein Token mit Schreibrechten hinterlegen.','error',14000);
+        } else if(r.migrated>0){
+          console.info(`📦 ${r.migrated} Bild(er) automatisch auf GitHub ausgelagert (Speicher-Optimierung).`);
+        }
       }).catch(e=>console.warn('Bild-Migration übersprungen:',e));
     },4000);
   }
