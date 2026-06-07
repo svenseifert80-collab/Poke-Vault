@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq45nqo9perhu",
+      "priceHistory": [],
+      "name": "Hisui-Zoroark VStar",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Promo SWSH",
+      "setCode": "",
+      "cardNumber": "SWSH298",
+      "source": "bought",
+      "purchasePrice": 0.99,
+      "quantity": 1,
+      "purchaseDate": "2025-07-24",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221955307",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SWSH-Black-Star-Promos/Hisuian-Zoroark-VSTAR-V1-SWSH298?sellerCountry=7&language=1,3&minCondition=2",
+      "imageData": "images/1780859317180-wqfs.jpg"
+    },
+    {
       "id": "mq45h4wxpplmm",
       "priceHistory": [
         {
