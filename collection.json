@@ -1592,6 +1592,11 @@
       "id": "mpu1d67jxwxe7",
       "priceHistory": [
         {
+          "date": "2025-08-07",
+          "price": 11.99,
+          "note": "CardMarket günstigstes Angebot"
+        },
+        {
           "date": "2026-05-31",
           "price": 11.5,
           "note": "Cardmarket günstigstes Angebot"
