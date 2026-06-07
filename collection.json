@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq43upqva2ykk",
+      "priceHistory": [],
+      "name": "Granbull V",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Brillante Sterne",
+      "setCode": "BRS",
+      "cardNumber": "159",
+      "source": "bought",
+      "purchasePrice": 1.29,
+      "quantity": 1,
+      "purchaseDate": "2025-08-09",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1224594811",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Brilliant-Stars/Granbull-V-V2-BRS159?sellerCountry=7&language=3&minCondition=2&isReverseHolo=Y",
+      "imageData": "images/1780856284210-0qdh.jpg"
+    },
+    {
       "id": "mq43ipekgkfvg",
       "priceHistory": [
         {
