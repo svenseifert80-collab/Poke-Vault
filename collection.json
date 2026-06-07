@@ -1841,6 +1841,11 @@
           "date": "2026-05-30",
           "price": 23,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 24,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Mew ex - Metal Card",
