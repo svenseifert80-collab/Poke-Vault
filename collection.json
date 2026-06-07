@@ -1432,6 +1432,11 @@
           "date": "2026-05-31",
           "price": 9,
           "note": "CardMArket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 7.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Victini",
