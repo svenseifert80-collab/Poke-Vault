@@ -7,6 +7,11 @@
           "date": "2025-08-09",
           "price": 1.05,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 1,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Granbull V",
