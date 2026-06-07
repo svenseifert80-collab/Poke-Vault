@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq42x06388kp2",
+      "priceHistory": [],
+      "name": "Lairon",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Maskerade im Zwielicht",
+      "setCode": "TWM",
+      "cardNumber": "184",
+      "source": "bought",
+      "purchasePrice": 3.62,
+      "quantity": 1,
+      "purchaseDate": "2025-09-02",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228671676",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Twilight-Masquerade/Lairon-V2-TWM184?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780854710704-83hk.jpg"
+    },
+    {
       "id": "mq42stta8c2gw",
       "priceHistory": [
         {
