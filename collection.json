@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq45h4wxpplmm",
+      "priceHistory": [],
+      "name": "Legios",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Lost Origin Trainer Gallery",
+      "setCode": "",
+      "cardNumber": "TG07",
+      "source": "bought",
+      "purchasePrice": 1.89,
+      "quantity": 1,
+      "purchaseDate": "2025-07-24",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221955307",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Astral-Radiance/Falinks-ASRTG07?sellerCountry=7&language=1,3&minCondition=2",
+      "imageData": "images/1780859008946-8xq2.jpg"
+    },
+    {
       "id": "mq456mcss9ni6",
       "priceHistory": [
         {
