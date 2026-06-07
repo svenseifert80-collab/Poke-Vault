@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq44qnc9echjw",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-08-03",
+          "price": 2,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Hisui-Arkani",
       "type": "card",
       "language": "DE",
