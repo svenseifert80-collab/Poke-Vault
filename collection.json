@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq456mcss9ni6",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-07-24",
+          "price": 0.99,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Kryppuk",
       "type": "card",
       "language": "DE",
