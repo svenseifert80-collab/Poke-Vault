@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq42x06388kp2",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-09-02",
+          "price": 2.85,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Lairon",
       "type": "card",
       "language": "DE",
