@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq42stta8c2gw",
+      "priceHistory": [],
+      "name": "Larvitar",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Obsidianflammen",
+      "setCode": "OBF",
+      "cardNumber": "203",
+      "source": "bought",
+      "purchasePrice": 4.17,
+      "quantity": 1,
+      "purchaseDate": "2025-09-02",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228671676",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Obsidian-Flames/Larvitar-V2-OBF203?sellerCountry=7&language=3&minCondition=2",
+      "imageData": ""
+    },
+    {
       "id": "mq42nr6iol7fp",
       "priceHistory": [
         {
