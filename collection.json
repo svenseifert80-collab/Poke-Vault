@@ -727,6 +727,11 @@
           "date": "2026-06-06",
           "price": 16,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 20,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Arbok",
