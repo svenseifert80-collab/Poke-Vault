@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq435n1fi27yn",
+      "priceHistory": [],
+      "name": "Okidogi ex",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Nebel der Sagen",
+      "setCode": "SFA",
+      "cardNumber": "82",
+      "source": "bought",
+      "purchasePrice": 1.6,
+      "quantity": 1,
+      "purchaseDate": "2025-09-02",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228329662",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Shrouded-Fable/Okidogi-ex-V2-SFA082?sellerCountry=7&language=3&minCondition=2",
+      "imageData": "images/1780855113980-2ifd.jpg"
+    },
+    {
       "id": "mq432er2ke0rp",
       "priceHistory": [
         {
