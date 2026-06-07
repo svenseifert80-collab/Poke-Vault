@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq42nr6iol7fp",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-09-02",
+          "price": 4.4,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Gothorita",
       "type": "card",
       "language": "DE",
