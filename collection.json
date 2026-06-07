@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq45h4wxpplmm",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-07-24",
+          "price": 1.79,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Legios",
       "type": "card",
       "language": "DE",
