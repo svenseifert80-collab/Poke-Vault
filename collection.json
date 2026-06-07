@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq44qnc9echjw",
+      "priceHistory": [],
+      "name": "Hisui-Arkani",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Lost Origin Trainer Gallery",
+      "setCode": "",
+      "cardNumber": "TG08",
+      "source": "bought",
+      "purchasePrice": 2.24,
+      "quantity": 1,
+      "purchaseDate": "2025-08-03",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221927669",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Lost-Origin/Hisuian-Arcanine-V2-LORTG08?language=1&minCondition=2&isReverseHolo=Y",
+      "imageData": "images/1780857771164-a22u.jpg"
+    },
+    {
       "id": "mq44j8tgmeh7w",
       "priceHistory": [
         {
