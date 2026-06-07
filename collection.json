@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq44barh9pqg5",
+      "priceHistory": [],
+      "name": "Brüllschweif",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Promo SVP",
+      "setCode": "",
+      "cardNumber": "SVP065",
+      "source": "bought",
+      "purchasePrice": 3.07,
+      "quantity": 1,
+      "purchaseDate": "2025-08-07",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1223626003",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/SV-Black-Star-Promos/Scream-Tail-V1-SVP065?sellerCountry=7&language=3&minCondition=2&isReverseHolo=Y",
+      "imageData": "images/1780857055992-ccma.jpg"
+    },
+    {
       "id": "mq43upqva2ykk",
       "priceHistory": [
         {
