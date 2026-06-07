@@ -2153,6 +2153,11 @@
           "date": "2026-05-30",
           "price": 2,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 1.85,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Miraidon ex",
