@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq44barh9pqg5",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-08-07",
+          "price": 3.07,
+          "note": "CardMarket günstigstes Angebot inkl. 0,67€ Porto"
+        }
+      ],
       "name": "Brüllschweif",
       "type": "card",
       "language": "DE",
