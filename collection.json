@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq452txlf9vai",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-07-24",
+          "price": 2.99,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Heliolisk",
       "type": "card",
       "language": "DE",
