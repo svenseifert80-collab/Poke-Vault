@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq3zkn26bn2fc",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-09-05",
+          "price": 1.2,
+          "note": "Einkaufspreis inkl. 0,50€ Porto"
+        }
+      ],
       "name": "Palafin",
       "type": "card",
       "language": "DE",
