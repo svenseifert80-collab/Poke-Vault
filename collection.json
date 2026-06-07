@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq42hquf5mm3n",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2026-06-07",
+          "price": 1.2,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Vivillon",
       "type": "card",
       "language": "JP",
