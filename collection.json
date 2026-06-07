@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq45nqo9perhu",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-07-24",
+          "price": 0.85,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Hisui-Zoroark VStar",
       "type": "card",
       "language": "DE",
