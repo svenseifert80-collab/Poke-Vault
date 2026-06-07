@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq3zkn26bn2fc",
+      "priceHistory": [],
+      "name": "Palafin",
+      "type": "card",
+      "language": "DE",
+      "serie": "Karmesin & Purpur",
+      "set": "Paldeas Schicksale",
+      "setCode": "PAF",
+      "cardNumber": "225",
+      "source": "bought",
+      "purchasePrice": 1.2,
+      "quantity": 1,
+      "purchaseDate": "2025-09-05",
+      "condition": "",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1228590779",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Paldean-Fates/Palafin-V2-PAF225?sellerCountry=7&language=6",
+      "imageData": ""
+    },
+    {
       "id": "mq2tcslmh4jlf",
       "priceHistory": [
         {
