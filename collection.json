@@ -2388,6 +2388,11 @@
           "date": "2026-05-30",
           "price": 62,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 60,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Wartortle",
