@@ -2,7 +2,13 @@
   "items": [
     {
       "id": "mq43upqva2ykk",
-      "priceHistory": [],
+      "priceHistory": [
+        {
+          "date": "2025-08-09",
+          "price": 1.05,
+          "note": "CardMarket günstigstes Angebot"
+        }
+      ],
       "name": "Granbull V",
       "type": "card",
       "language": "DE",
