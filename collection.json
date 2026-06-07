@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq43fjs1lpi7e",
+      "priceHistory": [],
+      "name": "Mega Lucario ex",
+      "type": "etb",
+      "language": "JP",
+      "serie": "Japanisch",
+      "set": "Mega Brave",
+      "setCode": "",
+      "cardNumber": "",
+      "source": "bought",
+      "purchasePrice": 0.82,
+      "quantity": 1,
+      "purchaseDate": "2025-08-19",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1225546740",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Mega-Brave/Mega-Lucario-ex-V1-m1L029?sellerCountry=7&language=7&minCondition=2",
+      "imageData": "images/1780855571929-fkc8.jpg"
+    },
+    {
       "id": "mq435n1fi27yn",
       "priceHistory": [
         {
