@@ -3236,6 +3236,11 @@
           "date": "2026-05-29",
           "price": 340,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 350,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Charizard ex",
