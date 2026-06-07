@@ -1,6 +1,28 @@
 {
   "items": [
     {
+      "id": "mq44j8tgmeh7w",
+      "priceHistory": [],
+      "name": "Flying Pikachu V",
+      "type": "card",
+      "language": "DE",
+      "serie": "Schwert & Schild",
+      "set": "Celebrations",
+      "setCode": "CEL",
+      "cardNumber": "6",
+      "source": "bought",
+      "purchasePrice": 2.24,
+      "quantity": 1,
+      "purchaseDate": "2025-08-03",
+      "condition": "mint",
+      "dealer": "https://www.cardmarket.com/de/Pokemon/Orders/1221927669",
+      "targetPrice": 0,
+      "storageLocation": "",
+      "notes": "",
+      "cardmarketUrl": "https://www.cardmarket.com/de/Pokemon/Products/Singles/Celebrations/Flying-Pikachu-V?language=1&minCondition=2&isReverseHolo=Y",
+      "imageData": "images/1780857423967-oq7o.jpg"
+    },
+    {
       "id": "mq44barh9pqg5",
       "priceHistory": [
         {
