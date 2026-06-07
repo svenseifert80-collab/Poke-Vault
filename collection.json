@@ -7,6 +7,11 @@
           "date": "2025-08-03",
           "price": 2,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-07",
+          "price": 2.6,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Hisui-Arkani",
