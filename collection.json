@@ -3138,6 +3138,11 @@
           "date": "2026-05-29",
           "price": 310,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 311.11,
+          "note": "Release-Preis"
         }
       ],
       "name": "151 Blooming Waters Premium Collection (EN)",
