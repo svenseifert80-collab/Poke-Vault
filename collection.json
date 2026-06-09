@@ -2821,6 +2821,11 @@
           "date": "2026-05-30",
           "price": 55,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 58.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Weiße Flammen Boosterbundle DE",
