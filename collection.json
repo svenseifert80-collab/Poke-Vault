@@ -3287,6 +3287,11 @@
           "date": "2026-05-29",
           "price": 35,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 39.99,
+          "note": "Release-Preis"
         }
       ],
       "name": "Ogerpon EX Premium-Kollektion - DE",
