@@ -2616,6 +2616,11 @@
           "date": "2026-05-30",
           "price": 45,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 45,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Stürmische Funken Boosterbundle DE",
