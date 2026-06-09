@@ -600,6 +600,11 @@
           "date": "2026-06-06",
           "price": 5.5,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 4.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Quaxwell",
