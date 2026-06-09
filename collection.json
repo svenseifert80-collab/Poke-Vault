@@ -2758,6 +2758,11 @@
           "date": "2026-05-30",
           "price": 130,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 130,
+          "note": "Release-Preis"
         }
       ],
       "name": "Ewige Rivalen TTB DE",
