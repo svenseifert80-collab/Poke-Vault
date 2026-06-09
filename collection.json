@@ -3049,6 +3049,11 @@
           "date": "2026-05-30",
           "price": 55,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 59.99,
+          "note": "Release-Preis"
         }
       ],
       "name": "Nebel der Sagen Seedraking ex Kollektion Box",
