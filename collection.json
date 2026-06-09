@@ -3480,6 +3480,11 @@
           "date": "2026-05-29",
           "price": 250,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 259,
+          "note": "Release-Preis"
         }
       ],
       "name": "Ewige Rivalen Display",
