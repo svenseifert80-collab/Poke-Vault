@@ -3333,6 +3333,11 @@
           "date": "2026-05-29",
           "price": 190,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 192,
+          "note": "Release-Preis"
         }
       ],
       "name": "Journey Together Booster Display EN",
