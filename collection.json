@@ -666,6 +666,11 @@
           "date": "2026-06-06",
           "price": 10,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 10.49,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Pidgey",
