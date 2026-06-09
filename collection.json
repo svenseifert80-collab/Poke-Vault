@@ -995,6 +995,11 @@
           "date": "2026-06-07",
           "price": 18.44,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 18,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Relaxo",
