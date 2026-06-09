@@ -2907,6 +2907,11 @@
           "date": "2026-05-30",
           "price": 85,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 89.95,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Weiße Flammen TTB DE",
