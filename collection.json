@@ -3082,6 +3082,11 @@
           "date": "2026-05-30",
           "price": 170,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 174,
+          "note": "Release-Preis"
         }
       ],
       "name": "Karmesin & Purpur 36 Booster Display (DE)",
