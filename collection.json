@@ -3254,6 +3254,11 @@
           "date": "2026-05-29",
           "price": 63,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 64.5,
+          "note": "Release-Preis"
         }
       ],
       "name": "Paldea Adventure Chest DE",
