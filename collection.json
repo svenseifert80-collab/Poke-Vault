@@ -3492,6 +3492,11 @@
           "date": "2026-05-29",
           "price": 1300,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 1277,
+          "note": "Release-Preis"
         }
       ],
       "name": "Pokemon Prismatic Evolutions Boosterbundle Display EN",
