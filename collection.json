@@ -2687,6 +2687,11 @@
           "date": "2026-05-30",
           "price": 60,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 60,
+          "note": "Release-Preis"
         }
       ],
       "name": "Prismatische Entwicklung Boosterbundle DE",
