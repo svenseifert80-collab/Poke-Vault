@@ -3130,6 +3130,11 @@
           "date": "2026-05-30",
           "price": 75,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 76.99,
+          "note": "Release-Preis"
         }
       ],
       "name": "Miraidon Top-Trainer Box TTB (DE)",
