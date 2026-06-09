@@ -2725,6 +2725,11 @@
           "date": "2026-05-30",
           "price": 200,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 169.9,
+          "note": "Release-Preis"
         }
       ],
       "name": "Obsidianflammen TTB DE",
