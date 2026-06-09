@@ -1626,6 +1626,11 @@
           "date": "2026-05-31",
           "price": 25,
           "note": "KardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 23,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Umbreon ex Stamp",
