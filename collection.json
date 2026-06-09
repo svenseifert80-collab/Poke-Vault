@@ -3416,6 +3416,11 @@
           "date": "2026-05-29",
           "price": 350,
           "note": "CardMarket günstigster Preis"
+        },
+        {
+          "date": "2026-06-09",
+          "price": 353.99,
+          "note": "Release-Preis"
         }
       ],
       "name": "Prismatic Evolution Super Premium Collection EN",
