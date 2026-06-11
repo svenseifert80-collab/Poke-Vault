@@ -643,6 +643,11 @@
           "date": "2026-06-06",
           "price": 15,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 14.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Lucario VStar",
