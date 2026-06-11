@@ -2758,6 +2758,11 @@
           "date": "2026-06-09",
           "price": 59.99,
           "note": "Release-Preis"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 60.5,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Wartortle",
