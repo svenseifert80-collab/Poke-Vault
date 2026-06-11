@@ -1187,6 +1187,11 @@
           "date": "2026-06-09",
           "price": 39.99,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 39.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Pikachu",
