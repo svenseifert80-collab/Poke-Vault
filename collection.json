@@ -1233,6 +1233,11 @@
           "date": "2026-06-09",
           "price": 8.65,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 10,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Floragato",
