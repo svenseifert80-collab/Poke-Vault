@@ -934,6 +934,11 @@
           "date": "2026-05-31",
           "price": 25,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 24.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Machoke",
