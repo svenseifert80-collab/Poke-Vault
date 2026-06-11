@@ -1390,6 +1390,11 @@
           "date": "2026-06-09",
           "price": 17.5,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 17.5,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Eevee",
