@@ -1961,6 +1961,11 @@
           "date": "2026-06-09",
           "price": 8.85,
           "note": "Release-Preis"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 8.99,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Victini",
