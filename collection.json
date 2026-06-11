@@ -1240,6 +1240,11 @@
           "date": "2026-06-09",
           "price": 23.99,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 24.5,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Sprigatito",
