@@ -2279,6 +2279,11 @@
           "date": "2026-06-09",
           "price": 4.5,
           "note": "CardMarket günstigstes Angebot"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 4.5,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Dunkles Garados",
