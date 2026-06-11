@@ -2113,6 +2113,11 @@
           "date": "2026-06-09",
           "price": 13.99,
           "note": "Release-Preis"
+        },
+        {
+          "date": "2026-06-11",
+          "price": 13,
+          "note": "CardMarket günstigstes Angebot"
         }
       ],
       "name": "Zapdos ex",
